@@ -32,7 +32,6 @@ class App extends Component {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'twt-taro',
       navigationBarTextStyle: 'black',
-      navigationStyle: 'custom',
       backgroundTextStyle: "dark"
     },
     networkTimeout: {

@@ -1,12 +1,17 @@
-html,
-body {
-    background-color: #f2f3f7;
-    font-size: 100px;
-    font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
-    height: 100%;
+view {
+  box-sizing: border-box;
 }
 text {
   word-break: break-all;
+}
+
+.page {
+  padding-bottom: 40px;
+
+  &.with-tabbar {
+    padding-bottom: 140px;
+  }
+
 }
 
 @page-background-color: #f2f3f7;
@@ -554,6 +559,9 @@ text {
 }
 .br6 {
   border-radius: 6px;
+}
+.br8 {
+  border-radius: 8px;
 }
 .z1 {
   z-index: 1;
