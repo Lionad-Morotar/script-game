@@ -4,6 +4,7 @@ import { View, Text, Block, Image, Swiper, SwiperItem } from '@tarojs/components
 
 import Tabbar from '../../components/tabbar/index'
 import Play from '../../components/play/index'
+import CBlock from '../../components/cblock/index'
 import { getRandomPlayData } from '../../comm/play.js'
 
 import './index.less'
@@ -82,20 +83,22 @@ export default class standardPage extends Component {
       <View className='page with-tabbar'>
 
         {/* 顶部轮播图 */}
-        <Swiper className='header-swiper'
-          autoplay
-          onChange={this.setIndicators}
-        >
-          {
-            swipers.map(s => {
-              return (
-                <SwiperItem key={s.name}>
-                  {/* <View>{s.name}</View> */}
-                </SwiperItem>
-              )
-            })
-          }
-        </Swiper>
+        <CBlock delay={100}>
+          <Swiper className='header-swiper'
+            autoplay
+            onChange={this.setIndicators}
+          >
+            {
+              swipers.map(s => {
+                return (
+                  <SwiperItem key={s.name}>
+                    {/* <View>{s.name}</View> */}
+                  </SwiperItem>
+                )
+              })
+            }
+          </Swiper>
+        </CBlock>
 
         {/* 轮播图指示器 */}
         <View className='segment indicators fcc'>
@@ -114,19 +117,35 @@ export default class standardPage extends Component {
 
         {/* 功能入口 */}
         <View className='segment entrys-con fsbc'>
-          <Image className='entry-icon' src={entryIcon1} mode='aspectFill' />
-          <Image className='entry-icon' src={entryIcon2} mode='aspectFill' />
-          <Image className='entry-icon' src={entryIcon3} mode='aspectFill' />
-          <Image className='entry-icon' src={entryIcon4} mode='aspectFill' />
-          <Image className='entry-icon' src={entryIcon5} mode='aspectFill' />
+          <CBlock>
+            <Image className='entry-icon' src={entryIcon1} mode='aspectFill' />
+          </CBlock>
+          <CBlock>
+            <Image className='entry-icon' src={entryIcon2} mode='aspectFill' />
+          </CBlock>
+          <CBlock>
+            <Image className='entry-icon' src={entryIcon3} mode='aspectFill' />
+          </CBlock>
+          <CBlock>
+            <Image className='entry-icon' src={entryIcon4} mode='aspectFill' />
+          </CBlock>
+          <CBlock>
+            <Image className='entry-icon' src={entryIcon5} mode='aspectFill' />
+          </CBlock>
         </View>
 
         {/* 房间区域 */}
         <View className='segment rooms-con fsbc p030'>
-          <View className='room room-big'></View>
+          <CBlock>
+            <View className='room room-big'></View>
+          </CBlock>
           <View className='con fsbc-c h100'>
-            <View className='room room-small'></View>
-            <View className='room room-small'></View>
+            <CBlock>
+              <View className='room room-small'></View>
+            </CBlock>
+            <CBlock>
+              <View className='room room-small'></View>
+            </CBlock>
           </View>
         </View>
 

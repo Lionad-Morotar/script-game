@@ -2,6 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
 import { View, Text, Image } from '@tarojs/components'
 
+import CBlock from '../../components/cblock/index'
+
 import './index.less'
 
 import settingIcon from '../../res/setting.png'
@@ -73,11 +75,13 @@ export default class TabbarCmpt extends Component {
                 {/* src={
                   item.path === active ? item.activedIcon : item.icon
                 } */}
-                <Image
-                  className='tabbar-list-item-icon'
-                  src={settingIcon}
-                  mode='aspectFit'
-                />
+                <CBlock>
+                  <Image
+                    className='tabbar-list-item-icon'
+                    src={settingIcon}
+                    mode='aspectFit'
+                  />
+                </CBlock>
                 <Text
                   className={
                     'tabbar-list-item-name fs20 ' + (
