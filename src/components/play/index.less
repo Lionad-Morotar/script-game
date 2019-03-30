@@ -1,6 +1,8 @@
 @play-height: 140px;
 
 .play-image {
+  flex-basis: 200px;
+  flex-shrink: 0;
   width: 200px;
   height: @play-height;
   background: #eee;
@@ -11,6 +13,30 @@
   height: @play-height;
 }
 
+.stars-con {
+  margin-left: 10px;
+  line-height: 15px;
+
+  .star-5 {
+    color: rgba(255, 204, 77, 1);
+  }
+  .star-4 {
+    color: rgba(255, 204, 77, .9);
+  }
+  .star-3 {
+    color: rgba(255, 204, 77, .8);
+  }
+  .star-2 {
+    color: rgba(255, 204, 77, .7);
+  }
+  .star-1 {
+    color: rgba(255, 204, 77, .65);
+  }
+}
+
+.tags-con {
+  margin-top: 3px;
+}
 .tag {
   margin-right: 8px;
   padding: 2px 8px;
