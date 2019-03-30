@@ -1,11 +1,18 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { View, Text, Image } from '@tarojs/components'
+import { Block, View, Text, Image } from '@tarojs/components'
+
+import CBlock from '../../components/cblock/index'
+import Tabbar from '../../components/tabbar/index'
 
 import './index.less'
 
 export default class standardPage extends Component {
 
+  config = {
+    navigationBarBackgroundColor: '#fff',
+    navigationBarTitleText: '剧本杀线下助手'
+  }
   state = {
   }
   store = {
@@ -17,12 +24,14 @@ export default class standardPage extends Component {
   componentDidShow () {}
 
   /** 页面跳转函数 */
-
   /** 渲染相关函数 */
 
   render () {
     return (
-      <View className='page'>
+      <View className='page with-tabbar'>
+
+        <Tabbar />
+
       </View>
     )
   }
