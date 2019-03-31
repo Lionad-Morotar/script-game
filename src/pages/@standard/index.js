@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
 import { Block, View, Text, Image } from '@tarojs/components'
 
+// eslint-disable-next-line no-unused-vars
 import CBlock from '../../components/cblock/index'
 import Tabbar from '../../components/tabbar/index'
 

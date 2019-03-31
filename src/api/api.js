@@ -46,7 +46,7 @@ const directRequest = (params, method = 'GET') => {
   const contentType = params.contentType ||
     'application/x-www-form-urlencoded'
   const option = {
-    url: extConfig.api_host + params.url,
+    url: params.api_host + params.url,
     data: Object.assign({
       'token': Taro.$globalData.token,
       '_t': new Date().getTime(),
@@ -71,7 +71,7 @@ const directRequest = (params, method = 'GET') => {
     }
   }
 
-  return Taro.request(option).catch(e => {
+  return Taro.request(option).catch(() => {
     commonExec()
     Taro.showModal({
       title: '提示',
