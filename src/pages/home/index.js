@@ -5,7 +5,7 @@ import { View, Text, Block, Image, Swiper, SwiperItem } from '@tarojs/components
 import Tabbar from '../../components/tabbar/index'
 import Play from '../../components/play/index'
 import CBlock from '../../components/cblock/index'
-import { getRandomPlayData } from '../../comm/play.js'
+import { getRandomBasicPlayData } from '../../comm/play.js'
 
 import './index.less'
 
@@ -18,8 +18,6 @@ import entryIcon5 from '../../res/homepage/entrys/5.png'
 export default class standardPage extends Component {
 
   config = {
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: '剧本杀线下助手'
   }
   state = {
     activedSwiper: 0,
@@ -27,35 +25,32 @@ export default class standardPage extends Component {
   store = {
     swipers: [
       {
-        name: '1'
+        name: '官方公告'
       },
       {
-        name: '2'
+        name: '重大剧本上新'
       },
       {
-        name: '3'
+        name: '特殊活动说明'
       },
       {
-        name: '4'
-      },
-      {
-        name: '5'
+        name: '签到玩法说明'
       },
     ],
     plays: [
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
-      getRandomPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
+      getRandomBasicPlayData(),
     ]
   }
 
@@ -64,12 +59,20 @@ export default class standardPage extends Component {
   componentWillMount () {}
   componentDidShow () {}
 
-  /** 页面跳转函数 */
+  /** 页面交互逻辑函数 */
 
   setIndicators (e) {
     const val = e && e.detail && e.detail.current
     this.setState({
       activedSwiper: val ||  0
+    })
+  }
+
+  /** 页面跳转函数 */
+
+  goRoom (id) {
+    Taro.navigateTo({
+      url: `../room/index?playid=${id}`
     })
   }
 
@@ -92,7 +95,9 @@ export default class standardPage extends Component {
               swipers.map(s => {
                 return (
                   <SwiperItem key={s.name}>
-                    {/* <View>{s.name}</View> */}
+                    <View className='max fcc'>
+                      <Text className='tool-tip'>{s.name}</Text>
+                    </View>
                   </SwiperItem>
                 )
               })
@@ -119,43 +124,67 @@ export default class standardPage extends Component {
         <View className='segment entrys-con fsbc'>
           <CBlock>
             <Image className='entry-icon' src={entryIcon1} mode='aspectFill' />
+            <View className='entry-name'>快速匹配</View>
           </CBlock>
           <CBlock>
             <Image className='entry-icon' src={entryIcon2} mode='aspectFill' />
+            <View className='entry-name'>上新榜单</View>
           </CBlock>
           <CBlock>
             <Image className='entry-icon' src={entryIcon3} mode='aspectFill' />
+            <View className='entry-name'>创建房间</View>
           </CBlock>
           <CBlock>
             <Image className='entry-icon' src={entryIcon4} mode='aspectFill' />
+            <View className='entry-name'>查找房间</View>
           </CBlock>
           <CBlock>
             <Image className='entry-icon' src={entryIcon5} mode='aspectFill' />
+            <View className='entry-name'>每日签到</View>
           </CBlock>
         </View>
 
         {/* 房间区域 */}
         <View className='segment rooms-con fsbc p030'>
           <CBlock>
-            <View className='room room-big'></View>
+            <View className='room room-big'>
+              <View className='max fcc'>
+                <Text className='tool-tip'>游戏大厅</Text>
+              </View>
+            </View>
           </CBlock>
           <View className='con fsbc-c h100'>
             <CBlock>
-              <View className='room room-small'></View>
+              <View className='room room-small'>
+                <View className='max fcc'>
+                  <Text className='tool-tip'>新手快速匹配</Text>
+                </View>
+              </View>
             </CBlock>
             <CBlock>
-              <View className='room room-small'></View>
+              <View className='room room-small'>
+                <View className='max fcc'>
+                  <Text className='tool-tip'>高手快速匹配</Text>
+                </View>
+              </View>
             </CBlock>
           </View>
         </View>
 
         {/* 剧本列表 */}
 
+        <View className='segment-header'>
+          <Text>推荐剧本</Text>
+        </View>
         <View className='segment plays-con p030'>
           {
             plays.map((p) => {
               return (
-                <View className='mt20' key={p._id}>
+                <View
+                  className='mt20'
+                  onClick={this.goRoom.bind(this, p.id)}
+                  key={p._id}
+                >
                   <Play play={p}  />
                 </View>
               )

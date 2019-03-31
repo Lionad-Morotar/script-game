@@ -23,7 +23,10 @@ export default class standardPage extends Component {
   componentWillMount () {}
   componentDidShow () {}
 
+  /** 页面交互逻辑函数 */
+
   /** 页面跳转函数 */
+
   /** 渲染相关函数 */
 
   render () {

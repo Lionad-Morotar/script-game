@@ -21,7 +21,8 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/home/index'
+      'pages/home/index',
+      'pages/room/index'
     ],
     permission: {
       // "scope.userLocation": {
@@ -30,7 +31,7 @@ class App extends Component {
     },
     window: {
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'twt-taro',
+      navigationBarTitleText: '标志名 | 剧本杀线下助手',
       navigationBarTextStyle: 'black',
       backgroundTextStyle: "dark"
     },
