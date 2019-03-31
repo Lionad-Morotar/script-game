@@ -1,5 +1,7 @@
 # TWT Taro
 
+和涂涂一起的小程序项目 - 小程序端
+
 ## install & run
 
 1. 全局安装Taro: `npm install -g @tarojs/cli`
