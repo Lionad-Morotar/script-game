@@ -29,8 +29,6 @@ export default class PlayCmpt extends Component {
   render () {
     const { play } = this.props
 
-    console.log(Array.apply(null, { length: play.stars || 0 }))
-
     return (
       <View className='play-cmpt fsbc'>
 

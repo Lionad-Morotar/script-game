@@ -19,7 +19,11 @@ text {
 
 /* theme */
 
+.page {
+  background: @page-background-color;
+}
 .segment {
+  padding: 0 30px;
   background: @segment-background-color;
 }
 .segment-header {
@@ -27,6 +31,12 @@ text {
   padding: 0 30px;
   width: 100%;
   font-size: 28px;
+  font-weight: bold;
+}
+.block-header {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -47,12 +57,18 @@ text {
 }
 
 /** ATOM CSS */
+.pt20 {
+  padding-top: 20px;
+}
 .p30 {
   padding: 30px;
 }
 .p030 {
   padding-left: 30px;
   padding-right: 30px;
+}
+.pt30 {
+  padding-top: 30px;
 }
 .p035 {
   padding-left: 35px;
@@ -481,6 +497,12 @@ text {
 }
 .c333 {
   color: #333;
+}
+.c444 {
+  color: #444;
+}
+.c555 {
+  color: #555;
 }
 .c666 {
   color: #666;

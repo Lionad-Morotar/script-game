@@ -109,3 +109,10 @@ $Set('SystemInfo', Taro.getSystemInfoSync())
     )
   }
 })(Taro)
+
+Taro.$previewOndImage = (url) => {
+  Taro.previewImage({
+    urls: [url],
+    current: url
+  })
+}

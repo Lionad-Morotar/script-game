@@ -5,6 +5,7 @@ import { View, Text, Block, Image, Swiper, SwiperItem } from '@tarojs/components
 import Tabbar from '../../components/tabbar/index'
 import Play from '../../components/play/index'
 import CBlock from '../../components/cblock/index'
+
 import { getRandomBasicPlayData } from '../../comm/play.js'
 
 import './index.less'
@@ -68,6 +69,10 @@ export default class standardPage extends Component {
     })
   }
 
+  previewImage (url) {
+    Taro.$previewOndImage(url)
+  }
+
   /** 页面跳转函数 */
 
   goRoom (id) {
@@ -95,6 +100,12 @@ export default class standardPage extends Component {
               swipers.map(s => {
                 return (
                   <SwiperItem key={s.name}>
+                    {/* <Image
+                      className='header-image'
+                      src={s}
+                      mode='aspectFill'
+                      onClick={this.previewImage.bind(this, s)}
+                    /> */}
                     <View className='max fcc'>
                       <Text className='tool-tip'>{s.name}</Text>
                     </View>
