@@ -47,6 +47,7 @@
 }
 
 .roles-con {
+  position: relative;
   border-radius: 8px;
   background: #fafafa;
 
@@ -80,11 +81,45 @@
     background: #fafafa;
     padding: 25px 30px 30px 30px;
     line-height: 30px;
-    height: 100px;
     min-height: 150px;
+    transition: .1s;
 
-    .intro {
-      min-height: 100px;
+    .info-item {
+      display: flex;
+      margin-top: 6px;
+    }
+    .info-title {
+      display: inline-block;
+      min-width: 80px;
+      flex-shrink: 0;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .info-content {
+      display: inline-block;
+      margin-left: 12px;
+      font-size: 22px;
+      color: #444;
+      letter-spacing: 1px;
+    }
+  }
+  .mask {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(to top, rgba(250,250,250,1), rgba(250,250,250,.1));
+  }
+  .arrow-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #666;
+
+    &.reverse {
+      transform: rotate(180deg);
     }
   }
 }

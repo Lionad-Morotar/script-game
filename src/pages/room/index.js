@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { Block, View, Text, Image, Swiper, SwiperItem } from '@tarojs/components'
+import { View, Text, Image, Swiper, SwiperItem } from '@tarojs/components'
 
 import CBlock from '../../components/cblock/index'
 import Comment from '../../components/comment/index'
@@ -21,7 +21,8 @@ export default class RoomPage extends Component {
   }
   state = {
     play: {},
-    activeRole: {}
+    activeRole: {},
+    longDetails: false
   }
   store = {
     comments: [
@@ -57,6 +58,11 @@ export default class RoomPage extends Component {
   activeRole (idx) {
     this.setState({
       activeRole: this.state.play.roles[idx]
+    })
+  }
+  toggleLongDetails () {
+    this.setState({
+      longDetails: !this.state.longDetails
     })
   }
 
@@ -172,19 +178,39 @@ export default class RoomPage extends Component {
               circular
               current={activeRoleIdx}
               onChange={this.swiperToActiveRole}
+              style={{
+                height: this.state.longDetails ? '' : Taro.pxTransform(172)
+              }}
             >
               {
                 play.roles.map(r => {
                   return (
                     <SwiperItem key={r}>
-                      <View className='intro'>
-                        <Text className='fs22 ls1 c444'>{r.brief}</Text>
+                      <View className='info-item intro'>
+                        <Text className='info-title'>简介: </Text>
+                        <Text className='info-content'>{r.brief}</Text>
                       </View>
+                      {
+                        Object.keys(r.info).map(k => {
+                          return (
+                            <View className='info-item' key={k}>
+                              <Text className='info-title'>{k}: </Text>
+                              <Text className='info-content'>{r.info[k]}</Text>
+                            </View>
+                          )
+                        })
+
+                      }
                     </SwiperItem>
                   )
                 })
               }
             </Swiper>
+            <View className='mask'></View>
+            <Text
+              className={'click-area iconfont arrow-icon ' + (this.state.longDetails ? 'reverse' : '')}
+              onClick={this.toggleLongDetails}
+            >&#xe652;</Text>
           </View>
 
         </View>
