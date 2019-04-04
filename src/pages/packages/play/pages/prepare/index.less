@@ -1,0 +1,68 @@
+.page {
+  padding: 0 30px;
+  padding-top: 185px;
+}
+
+.players-con {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 25px 40px;
+  width: 100vw;
+  background: white;
+  border-top: solid 1px #eee;
+  z-index: 1;
+}
+.player-con {
+  .role-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  .role-name {
+    margin-top: 8px;
+    font-size: 24px;
+  }
+}
+
+.play-info-con {
+  width: 100%;
+  height: 150px;
+  background: white;
+  overflow: hidden;
+  transition: .3s;
+
+  .arrow-icon {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.1);
+    font-size: 24px;
+    color: #666;
+
+    .iconfont {
+      position: relative;
+      top: 3px;
+    }
+    &.reverse {
+      transform: rotate(180deg);
+    }
+  }
+  .header-image {
+    width: 100%;
+    height: 240px;
+  }
+  .intro-con {
+    padding: 10px 30px;
+    width: 100%;
+
+    .block-intro {
+      .intro {
+        line-height: 28px;
+      }
+    }
+  }
+}

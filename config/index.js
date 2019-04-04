@@ -1,3 +1,5 @@
+// const path = require('path')
+
 const config = {
   projectName: 'twt-taro',
   date: '2019-3-25',
@@ -59,7 +61,10 @@ const config = {
     },
     compile: {
       // exclude: ['src/components/ec-canvas/echarts.js']
-    }
+    },
+    // alias: {
+    //   '@/components': path.resolve(__dirname, '..', 'src/components')
+    // }
   },
   h5: {
     publicPath: '/',

@@ -13,8 +13,6 @@ import './index.less'
 
 import entryIcon from '../../res/homepage/entrys/1.png'
 
-console.log(entryIcon)
-
 export default class RoomPage extends Component {
 
   config = {
@@ -22,10 +20,13 @@ export default class RoomPage extends Component {
     navigationBarTitleText: '创建房间'
   }
   state = {
+    // 剧本
     play: {
       roles: []
     },
+    // 剧本介绍所绑定的角色
     activeRole: {},
+    // 角色信息是否展开
     longDetails: false
   }
   store = {
@@ -134,6 +135,7 @@ export default class RoomPage extends Component {
             }
           </View>
 
+
           {/* imppression tags */}
           <View className='tags-con fss fw'>
             {
@@ -144,6 +146,7 @@ export default class RoomPage extends Component {
               })
             }
           </View>
+
 
           {/* intro */}
           <View className='block-header'>
@@ -238,7 +241,7 @@ export default class RoomPage extends Component {
         </View>
 
         {/* 创建房间按钮 */}
-        <MainButton />
+        <MainButton label='创建房间' onClick={this.tryCreateAnRoom} />
 
       </View>
     )
@@ -252,6 +255,14 @@ export default class RoomPage extends Component {
     this.setState({
       play,
       activeRole: play.roles[0]
+    })
+  }
+
+  tryCreateAnRoom () {
+    Promise.resolve().then(() => {
+      Taro.navigateTo({
+        url: '../packages/play/pages/prepare/index'
+      })
     })
   }
 

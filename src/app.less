@@ -11,7 +11,17 @@ text {
   &.with-tabbar {
     padding-bottom: 140px;
   }
+}
 
+.arrow-icon {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  color: #666;
+
+  &.reverse {
+    transform: rotate(180deg);
+  }
 }
 
 .click-area {
@@ -27,6 +37,7 @@ text {
 /* theme */
 
 .page {
+  min-height: 100vh;
   background: @page-background-color;
 }
 .segment {
