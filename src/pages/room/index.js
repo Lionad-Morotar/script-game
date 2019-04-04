@@ -20,7 +20,9 @@ export default class RoomPage extends Component {
     navigationBarTitleText: '创建房间'
   }
   state = {
-    play: {},
+    play: {
+      roles: []
+    },
     activeRole: {},
     longDetails: false
   }
@@ -185,7 +187,7 @@ export default class RoomPage extends Component {
               {
                 play.roles.map(r => {
                   return (
-                    <SwiperItem key={r}>
+                    <SwiperItem key={r.name}>
                       <View className='info-item intro'>
                         <Text className='info-title'>简介: </Text>
                         <Text className='info-content'>{r.brief}</Text>
