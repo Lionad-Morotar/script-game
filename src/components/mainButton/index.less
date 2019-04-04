@@ -1,0 +1,52 @@
+// @page-background-color: #ebedf7;
+@page-background-color: transparent;
+
+.main-button-area {
+  box-sizing: border-box;
+  padding: 0 30px;
+  z-index: 999;
+}
+
+.main-button {
+  width: 690px;
+  height: 98px;
+  line-height: 98px !important;
+  font-size: 34px !important;
+  border: none !important;
+  border-radius: 50px !important;
+  color: white !important;
+  background: linear-gradient(63deg, #4eacff 0%, #4ec3ff 30%, #4ec3ff 70%, #4ed8ff 100%) !important;
+  letter-spacing: 1px !important;
+  transition: .2s;
+}
+
+.main-button-hover-class {
+  opacity: .9;
+}
+
+.fixed-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 750px;
+  height: 140px;
+  background: @page-background-color;
+}
+
+.loading {
+  margin-right: 20px;
+  animation: spin .5s linear infinite;
+  transition: all .5s;
+  // opacity: 1;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

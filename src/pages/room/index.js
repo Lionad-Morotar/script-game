@@ -4,8 +4,10 @@ import { View, Text, Image, Swiper, SwiperItem } from '@tarojs/components'
 
 import CBlock from '../../components/cblock/index'
 import Comment from '../../components/comment/index'
+import MainButton from '../../components/mainButton/index'
 
 import { getRandomPlayData, getRandomPlayCommentData } from '../../comm/play.js'
+
 
 import './index.less'
 
@@ -234,6 +236,9 @@ export default class RoomPage extends Component {
             }
           </View>
         </View>
+
+        {/* 创建房间按钮 */}
+        <MainButton />
 
       </View>
     )
