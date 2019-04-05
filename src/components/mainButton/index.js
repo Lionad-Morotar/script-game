@@ -33,13 +33,6 @@ export default class MainButtonComponent extends Component {
     // id: '',
   }
 
-  componentWillUnmount () {
-    Taro.$Del(this.state.globalUniqueID)
-    if (this.props.needLock) {
-      Taro.$globalData['ButtonLock'] = false
-    }
-  }
-
   handleClick () {
     const { disabled } = this.props
     const roll = () => {
