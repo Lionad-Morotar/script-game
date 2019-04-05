@@ -85,7 +85,7 @@ export default class RoomPage extends Component {
     const activeRoleIdx = play.roles && play.roles.findIndex(x => activeRole === x)
 
     return (
-      <View className='page'>
+      <View className='page with-main-button'>
 
         {/* 顶部轮播图 */}
         <CBlock delay={100}>

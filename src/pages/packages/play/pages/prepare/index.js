@@ -107,7 +107,7 @@ export default class PreparePage extends Component {
     const { play, players, roleSelectedRec, roleReadydRec, canReady, isReady } = this.state
 
     return (
-      <View className='page'>
+      <View className='page with-main-button'>
 
         {/* players-con */}
         <View className='players-con fsc'>
