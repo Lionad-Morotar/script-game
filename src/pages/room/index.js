@@ -213,7 +213,7 @@ export default class RoomPage extends Component {
                 })
               }
             </Swiper>
-            <View className='mask'></View>
+            <View className='mask' onClick={this.toggleLongDetails}></View>
             <Text
               className={'click-area iconfont arrow-icon ' + (this.state.longDetails ? 'reverse' : '')}
               onClick={this.toggleLongDetails}
