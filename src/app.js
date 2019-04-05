@@ -28,7 +28,8 @@ class App extends Component {
       {
         root: 'pages/packages/play',
         pages: [
-          'pages/prepare/index'
+          'pages/prepare/index',
+          'pages/game/index',
         ]
       }
     ],

@@ -4,7 +4,11 @@ import { observable } from 'mobx'
 
 const appStore = observable({
 
-  // ...
+  // headbar 高度
+  headHeight: 0,
+  setHeadHeight (val) {
+    this.headHeight = val
+  },
 
 })
 
