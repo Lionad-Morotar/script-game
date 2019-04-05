@@ -6,16 +6,18 @@ import './index.less'
 export default class CBlockCmpt extends Component {
 
   static defaultProps = {
-    delay: 0
+    delay: 0,
+    disabled: false,
+    layout: ''
   }
 
   render () {
-    const { delay } = this.props
+    const { delay, layout, disabled } = this.props
 
     return (
       <View
-        className='cblock-cmpt'
-        hover-class='main-hover-effect'
+        className={'cblock-cmpt ' + layout}
+        hover-class={disabled ? '' : 'main-hover-effect'}
         hover-start-time={delay}
         hover-stay-time='60'
         hover-stop-propagation

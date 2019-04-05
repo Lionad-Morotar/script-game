@@ -39,7 +39,7 @@ class App extends Component {
     },
     window: {
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '标志名 | 剧本杀线下助手',
+      navigationBarTitleText: '剧本杀线下助手',
       navigationBarTextStyle: 'black',
       backgroundTextStyle: "dark"
     },

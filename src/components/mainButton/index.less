@@ -8,6 +8,7 @@
 }
 
 .main-button {
+  position: relative;
   width: 690px;
   height: 98px;
   line-height: 98px !important;
@@ -15,9 +16,34 @@
   border: none !important;
   border-radius: 50px !important;
   color: white !important;
-  background: linear-gradient(63deg, #4eacff 0%, #4ec3ff 30%, #4ec3ff 70%, #4ed8ff 100%) !important;
+  background-image: linear-gradient(63deg, #4eacff 0%, #4ec3ff 30%, #4ec3ff 70%, #4ed8ff 100%, #dddddd 100%) !important;
   letter-spacing: 1px !important;
   transition: .2s;
+
+  &.disabled {
+    background-image:  linear-gradient(63deg, #4eacff 0%, #4ec3ff 0%, #4ec3ff 0%, #4ed8ff 0%, #dddddd 25%) !important;
+    animation: shake .1s ease-in-out;
+  }
+  @keyframes shake {
+    0% {
+      left: 0;
+    }
+    12.5% {
+      left: -1vw;
+    }
+    37.5% {
+      left: 1vw;
+    }
+    62.5% {
+      left: -1vw;
+    }
+    87.5% {
+      left: 1vw;
+    }
+    100% {
+      left: 0;
+    }
+  }
 }
 
 .main-button-hover-class {

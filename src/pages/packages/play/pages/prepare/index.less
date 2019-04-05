@@ -1,22 +1,26 @@
 .page {
   padding: 0 30px;
-  padding-top: 185px;
+  padding-top: 150px;
+  padding-bottom: 40px;
 }
 
 .players-con {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 25px 40px;
+  padding: 10px 30px;
   width: 100vw;
   background: white;
   border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
   z-index: 1;
 }
 .player-con {
+  margin-right: 20px;
+
   .role-icon {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
   }
   .role-name {
@@ -27,14 +31,26 @@
 
 .play-info-con {
   width: 100%;
-  height: 150px;
   background: white;
   overflow: hidden;
   transition: .3s;
 
+  .play-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    height: 130px;
+    line-height: 130px;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,.2);
+  }
   .arrow-icon {
     position: absolute;
-    top: 20px;
+    top: 40px;
     right: 30px;
     width: 50px;
     height: 50px;
@@ -62,6 +78,58 @@
     .block-intro {
       .intro {
         line-height: 28px;
+      }
+    }
+  }
+}
+
+.roles-con {
+  .role-con {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+
+    .role-avatar {
+      width: 200px;
+      height: 200px;
+      flex-shrink: 0;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+    .role-info-wrapper {
+      padding: 15px 20px;
+
+      .role-name {
+        font-weight: bold;
+      }
+    }
+    .role-select-con {
+      padding: 0 20px 10px 20px;
+      height: 65px;
+
+      .player-icon {
+        margin-right: 14px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+
+        &.first {
+          box-shadow: 0 0 1px 1px #4ec3ff;
+        }
+      }
+      .split-line {
+        display: inline-block;
+        margin-right: 14px;
+        height: 28px;
+        width: 3px;
+        background: #eee;
+      }
+    }
+    .role-select-ready {
+      line-height: 30px;
+
+      .ready-icon {
+        color: #59d676;
       }
     }
   }

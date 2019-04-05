@@ -31,7 +31,7 @@ const getBasicModel = () => {
 
   return {
     _id: getRandomID(),
-    name: '剧本名称',
+    name: '普通的剧本',
     stars: +((Math.random() * 5).toFixed(0)) || 1,
     // 剧本本身的标签
     tags,

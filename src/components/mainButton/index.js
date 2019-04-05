@@ -10,7 +10,7 @@ import './index.less'
  *  1. 防抖与节流保证`TIME_OUT`时间内只出发一次请求
  *  2. 全局的锁机制
  */
-const TIME_OUT = 800
+const TIME_OUT = 300
 
 export default class MainButtonComponent extends Component {
 
@@ -26,6 +26,7 @@ export default class MainButtonComponent extends Component {
     clickBasicTick: null,
     status: '',
     hoverClass: '',
+    disabled: false
   }
 
   state = {
@@ -40,6 +41,7 @@ export default class MainButtonComponent extends Component {
   }
 
   handleClick () {
+    const { disabled } = this.props
     const roll = () => {
       this.props.onClick && this.props.onClick()
       this.setState({
@@ -50,12 +52,12 @@ export default class MainButtonComponent extends Component {
         }, TIME_OUT)
       })
     }
-    !this.state.clickBasicTick && roll()
+    !this.state.clickBasicTick && !disabled && roll()
   }
 
   render () {
     // eslint-disable-next-line
-    const { label, layout, styles, config } = this.props
+    const { label, layout, styles, config, disabled } = this.props
 
     return (
       <View
@@ -72,7 +74,7 @@ export default class MainButtonComponent extends Component {
         <CBlock>
           <Button
             plain
-            className={config.sideButton ? 'main-button-with-side-button' : 'main-button'}
+            className={'main-button ' + (disabled ? 'disabled' : '')}
             hoverClass={this.props.hoverClass || 'main-button-hover-class'}
             onClick={this.handleClick}
           >
