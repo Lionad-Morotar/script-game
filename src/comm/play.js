@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
+import { plays } from './res/play/index.js'
+
 import { getRandomItem, getRandomFormatedTime, getRandomID, percent } from '../utils/utils.js'
 
 /** Model */
@@ -25,10 +27,14 @@ const getCommentModel = () => {
 }
 
 // 获取常用的剧本字段
+const getTestModel = () => {
+  return getRandomItem(plays)
+}
 const getBasicModel = () => {
   const tags = ['简单本', '4人本', '找出凶手']
   percent() && tags.push('编辑推荐')
 
+  return getTestModel()
   return {
     _id: getRandomID(),
     name: '普通的剧本',
@@ -45,6 +51,7 @@ const getBasicModel = () => {
     roles: [
       {
         name: '杀人凶手',
+        key: 'killer',
         nick: ['凶手', '色狼'],
         // 限50个字
         brief: '我名字叫杀人凶手, 可是我不是杀人凶手啊, 但是由于简介只能这么长, 我没办法给你透露更多内容了',
