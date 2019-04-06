@@ -5,6 +5,7 @@ import { Block, View, Text, Image } from '@tarojs/components'
 
 // import CBlock from '../../../../../components/cblock/index'
 import HeadBar from '../../../../../components/headBar/index'
+import InfoPad from '../../../../../components/infoPad/index'
 
 import { getRandomPlayData } from '../../../../../comm/play.js'
 
@@ -32,8 +33,7 @@ export default class PreparePage extends Component {
     players: [
       {
         name: 'Lionad',
-        sex: 1,
-        lever: 7,
+        role: ''
       }
     ],
     activeSegment: {},
@@ -59,7 +59,15 @@ export default class PreparePage extends Component {
   componentWillMount () {
     this.initData()
   }
-  componentDidShow () {}
+  componentDidShow () {
+    const { players } = this.state
+    this.setState({
+      players: (
+        players[0].role = 'king',
+        players
+      )
+    })
+  }
 
   /** 页面交互逻辑函数 */
 
@@ -117,69 +125,20 @@ export default class PreparePage extends Component {
           <View className='play-title fsc'>
             <Text>{activeSegment.name}</Text>
           </View>
-          <View className='intro-con'>
-            <View className='intro'>
-              <Text className='fs22 ls1 c444'>{activeSegment.intro}</Text>
-            </View>
-          </View>
+          {
+            activeSegment.intro && (
+              <View className='intro-con'>
+                <View className='intro'>
+                  <Text className='fs22 ls1 c444'>{activeSegment.intro}</Text>
+                </View>
+              </View>
+            )
+          }
         </View>
 
         {/* segment content */}
         <View className='contents-con mt20'>
-          <View className='content-con'>
-            {
-              handleSegmentContent.length > 0
-              ?
-              handleSegmentContent.map((x, idx) => {
-                return (
-                  <Block key={x.type + x.data + idx}>
-                    {
-                      x.type === 'line' && (
-                        <Block>
-                          {
-                            x.data && (
-                              <View className='details-line-name mt10 fsc'>
-                                <Text className='fs24 bold'>{x.data}</Text>
-                              </View>
-                            )
-                          }
-                          <View className='details-line'></View>
-                        </Block>
-                      )
-                    }
-                    {
-                      x.type === 'text' && (
-                        <View className='details-text-con'>
-                          <Text className='fs24 ls1' key={x.data}>{x.data}</Text>
-                        </View>
-                      )
-                    }
-                    {
-                      x.type === 'letter' && (
-                        <View className='details-letter-con'>
-                          <Text className='fs24 ls1' key={x.data}>{x.data}</Text>
-                        </View>
-                      )
-                    }
-                    {
-                      x.type === 'image' && (
-                        <View className='details-image-con'>
-                          <Image
-                            className='details-image'
-                            src={x.data}
-                            mode='widthFix'
-                            key={x.data}
-                          />
-                        </View>
-                      )
-                    }
-                  </Block>
-                )
-              })
-              :
-              <Text className='fs28 c79 fcc'>暂未详情</Text>
-            }
-          </View>
+          <InfoPad info={handleSegmentContent} />
         </View>
 
         {/* actions segment */}
