@@ -14,6 +14,7 @@ import './index.less'
 import entryIcon from '../../../../../res/homepage/entrys/1.png'
 // import roleImage from '../../../../../res/role.png'
 
+@inject('playStore')
 @inject('appStore')
 @observer
 export default class PreparePage extends Component {
@@ -30,12 +31,11 @@ export default class PreparePage extends Component {
     play: {
       roles: []
     },
-    players: [
-      {
-        name: 'Lionad',
-        role: ''
-      }
-    ],
+    players: [{
+      name: 'Lionad',
+      sex: 1,
+      lever: 7,
+    }],
     activeSegment: {},
     isLongDetails: false,
   }
@@ -59,8 +59,12 @@ export default class PreparePage extends Component {
   componentWillMount () {
     this.initData()
   }
-  componentDidShow () {
+  componentDidShow () {}
+  setTestData () {
     const { players } = this.state
+    const { playStore } = this.props
+
+    playStore.curPlayerRole = 'king'
     this.setState({
       players: (
         players[0].role = 'king',
@@ -77,6 +81,17 @@ export default class PreparePage extends Component {
     })
   }
 
+  /** !For Test Only
+   *  返回上一个页面
+   */
+  goLastSegment () {
+    const { play, activeSegment } = this.state
+    const index = play.segments.findIndex(s => s === activeSegment)
+
+    this.setState({
+      activeSegment: play.segments[index - 1 < 0 ? 0 : index - 1]
+    })
+  }
   goNextSegment () {
     const { play, activeSegment } = this.state
     const index = play.segments.findIndex(s => s === activeSegment)
@@ -173,7 +188,11 @@ export default class PreparePage extends Component {
               })
             }
           </View>
-          <View className='next-button fcc' onClick={this.goNextSegment}>
+          <View
+            className='next-button fcc'
+            onClick={this.goNextSegment}
+            onLongPress={this.goLastSegment}
+          >
             <Text className='ls3'>下一阶段</Text>
           </View>
         </View>
@@ -189,6 +208,8 @@ export default class PreparePage extends Component {
     this.setState({
       play,
       activeSegment: play.segments[0]
+    }, () => {
+      this.setTestData()
     })
   }
 

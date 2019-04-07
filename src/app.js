@@ -4,6 +4,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Index from './pages/index'
 
+import playStore from './store/playStore'
 import appStore from './store/appStore'
 
 import api from './api/api'
@@ -14,7 +15,8 @@ import utils from './utils/utils'
 import './app.less'
 
 const store = {
-  appStore
+  appStore,
+  playStore
 }
 
 class App extends Component {

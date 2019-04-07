@@ -66,7 +66,7 @@ export default {
         },
         {
           type: 'text',
-          validData: [
+          unValidData: [
             {
               role: 'hadis',
               data: '你是国王寝室的门卫，工作时间是晚上6点到次日管家到寝室叫国王起床。昨晚10点左右巴德将军说找国王有事，你便让他进入了国王的房间，大概在凌晨1点巴德将军才一脸表情严肃的出了房间。房间的隔音功能很好，你完全不知道巴德将军在里面和国王在做什么。'
@@ -95,7 +95,7 @@ export default {
         },
         {
           type: 'text',
-          validData: [
+          unValidData: [
             {
               role: 'hadis',
               data: '年轻力壮的你哪能忍受整夜站在门前，你需要你个女人的滋润。所以，每晚凌晨0点到2点是你和女仆玛丽的幽会时间，而这件事一旦被发现你便会因为玩忽职守而失去这份好工作。实际上你2点回到房间后一直没有看到巴德将军出来，所以你索性编造了巴德将军1点出来的谎言。'
@@ -115,6 +115,67 @@ export default {
             {
               role: 'tom',
               data: '今早你来到寝室后你大吃了一惊，巴德将军躺在寝室的一块地毯上，背上插着一把小刀，血已经染红了地毯。你觉得这件事一旦传出去会对国王的名誉造成极大的打击，因此你偷偷处理了这件事。你先将外面的门卫支走，再将尸体从窗户丢出，最后将染血的地毯放进餐车准备拿走将上面的血迹洗掉。这一切做完后，你才叫醒了国王。'
+            }
+          ]
+        },
+        {
+          type: 'line',
+          data: '你的游戏目标'
+        },
+        {
+          type: 'text',
+          unValidData: [
+            {
+              role: 'hadis',
+              data: '1. 将军的死对你来说触动不大, 你只要不要被大家知道你玩忽职守(而丢掉工作), 就算胜利\n2. 寻找真相, 保护自己和女仆玛丽不要被投票出局'
+            },
+            {
+              role: 'king',
+              data: '1. 维护自己的威严, 不要是自己陷入废言乱语而丢失声望\n2. 将军的死是一个绝好的抹黑王子革新派的好机会'
+            },
+            {
+              role: 'prince',
+              data: '1. 无论真相如何你都要抓住这次机会抹黑国王'
+            },
+            {
+              role: 'marry',
+              data: '1. 不要向大家透露你和哈迪斯不寻常的关系\n2. 寻找真相, 保护自己不要被投票出局'
+            },
+            {
+              role: 'tom',
+              data: '1. 不要向大家透露将军死在国王房间里这件事\n2. 寻找真相, 同时保护自己和国王不要被投票出局'
+            }
+          ]
+        },
+        {
+          type: 'line',
+          data: '特殊技能',
+          // unValid: {
+          //   role: ['king', 'prince', 'marry', 'hadis', 'tom']
+          // }
+        },
+        {
+          type: 'text',
+          unValidData: [
+            {
+              role: 'king',
+              data: '管家汤姆是你的心腹, 他不能将你投票出局'
+            },
+            {
+              role: 'tom',
+              data: '你是国王的心腹, 你不能将国王投票出局'
+            },
+            {
+              role: 'prince',
+              data: '你是年轻的革新派领袖, 汲取了巴德将军的干劲使你在投票阶段有一票顶两票的能力'
+            },
+            {
+              role: 'marry',
+              data: '因为你和哈迪斯特殊的关系, 你和哈迪斯不能相互投票'
+            },
+            {
+              role: 'hadis',
+              data: '因为你和哈迪斯特殊的关系, 你和哈迪斯不能相互投票'
             }
           ]
         },
@@ -148,14 +209,13 @@ export default {
         },
         {
           type: 'options',
-          theme: 'normal',
-          validData: [
+          unValidData: [
             {
               role: 'tom',
               data: [
                 {
                   name: '房间',
-                  validData: [
+                  unValidData: [
                     {
                       key: 'stolen-key',
                       percent: 100
@@ -168,7 +228,7 @@ export default {
                 },
                 {
                   name: '回忆',
-                  validData: [
+                  unValidData: [
                     {
                       key: 'black-briefcase',
                       percent: 100
@@ -182,7 +242,7 @@ export default {
               data: [
                 {
                   name: '厨房',
-                  validData: [
+                  unValidData: [
                     {
                       key: 'opened-door',
                       percent: 100
@@ -191,7 +251,7 @@ export default {
                 },
                 {
                   name: '回忆',
-                  validData: [
+                  unValidData: [
                     {
                       key: 'wash',
                       percent: 100
@@ -300,7 +360,7 @@ export default {
       content: [
         {
           type: 'text',
-          data: '请注意, 每个人都有自己难言的秘密, 请不要互相苛刻或是指责'
+          data: '请注意, 每个人都有自己难言的秘密, 请不要互相苛刻或是指责, 请根据你的角色目标说出真相或是做最后的隐藏吧~'
         },
       ]
     }

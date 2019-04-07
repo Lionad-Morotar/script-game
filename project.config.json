@@ -28,8 +28,22 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": []
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "prepare",
+					"pathName": "pages/packages/play/pages/prepare/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "ingame",
+					"pathName": "pages/packages/play/pages/game/index",
+					"scene": null
+				}
+			]
 		}
 	}
 }
