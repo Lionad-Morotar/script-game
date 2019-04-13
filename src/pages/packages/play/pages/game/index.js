@@ -1,9 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { observer, inject } from '@tarojs/mobx'
 // eslint-disable-next-line no-unused-vars
-import { Block, View, Text, Image } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 
-// import CBlock from '../../../../../components/cblock/index'
+import RedDot from '../../../../../components/reddot/index'
 import HeadBar from '../../../../../components/headBar/index'
 import InfoPad from '../../../../../components/infoPad/index'
 import ThreadCard from '../../../../../components/threadCard/index'
@@ -170,7 +170,6 @@ export default class PreparePage extends Component {
     const { play, playerThreads } = this.state
     const thread = Taro.$utils.deepClone(play.threads[hdlThread.key])
     playerThreads[hdlThread.key] = thread
-    console.log(thread)
     this.setState({
       curThread: thread
     }, () => {
@@ -183,11 +182,12 @@ export default class PreparePage extends Component {
   /** 渲染相关函数 */
 
   render () {
-    const { players, activeSegment, curThread, open } = this.state
+    const { players, activeSegment, curThread, open, playerThreads } = this.state
     const { actionNameReflex } = this.store
     const { appStore } = this.props
 
     const handleSegmentContent = activeSegment.content || []
+    const hasPlayerThreads = Object.keys(playerThreads).length
 
     return (
       <View className='page with-main-button'>
@@ -254,7 +254,11 @@ export default class PreparePage extends Component {
                       action === 'segments' && <Text className='iconfont'>&#xe620;</Text>
                     }
                     {
-                      action === 'threads' && <Text className='iconfont'>&#xe618;</Text>
+                      action === 'threads' && (
+                        <RedDot visible={hasPlayerThreads}>
+                          <Text className='iconfont'>&#xe618;</Text>
+                        </RedDot>
+                      )
                     }
                     {
                       action === 'open-chat' && <Text className='iconfont'>&#xe627;</Text>
