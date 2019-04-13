@@ -25,6 +25,24 @@
   opacity: 1;
 }
 
+.share-button {
+  display: none;
+  margin-top: 2vh;
+  width: 200px;
+  height: 90px;
+  line-height: 90px;
+  border: none;
+  border-radius: 18px;
+  background-image: linear-gradient(63deg, #4eacff 0%, #4ec3ff 30%, #4ec3ff 70%, #4ed8ff 100%, #dddddd 100%) !important;
+  font-size: 34px;
+  color: white;
+  transition: @quick-transition-time;
+
+  &.active {
+    display: block;
+  }
+}
+
 .container {
   position: relative;
   margin: 0 auto;
@@ -41,7 +59,7 @@
 }
 .container.active {
   opacity: 1;
-  height: 900px;
+  height: 850px;
 }
 
 .head-logo {
@@ -74,10 +92,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 30px;
-    padding-bottom: 25px;
+    padding: 30px;
     width: 100%;
-    height: calc( 100% - 130px );
     overflow: hidden;
     overflow-y: scroll;
   }

@@ -35,6 +35,7 @@ export default class InfoPadCmpt extends Component {
   resetLocalInfo (props) {
     const { info } = props
     const cloneInfo = Taro.$utils.deepClone(info)
+    // console.log('info cloneInfo : ', info, cloneInfo)
     this.setState({
       localInfo: cloneInfo.map(x => (x.data = this.retValidData(x), x))
     }, () => {

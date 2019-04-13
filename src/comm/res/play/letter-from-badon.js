@@ -385,160 +385,252 @@ export default {
       ]
     }
   ],
+  threadsCollections: {
+    'tom-room': {
+      name: '汤姆的房间'
+    },
+    'tom-memory': {
+      name: '汤姆的回忆'
+    },
+    'kitchen': {
+      name: '城堡的厨房'
+    },
+    'marry-memory': {
+      name: '玛丽的回忆'
+    },
+    'king-room': {
+      name: '国王寝室'
+    },
+    'prince-memory': {
+      name: '王子的回忆'
+    },
+    'badon-room': {
+      name: '巴顿将军的寝室'
+    },
+    'king-memory': {
+      name: '国王的回忆'
+    },
+    'hadis-room': {
+      name: '哈迪斯的房间'
+    },
+    'hadis-memory': {
+      name: '哈迪斯的回忆'
+    }
+  },
   threads: {
-    'stolen-key': [
-      {
-        type: 'text',
-        data: '你有城堡里所有房间的备用钥匙，但今天你发现厨房的那把不见了，也许是被谁偷走了。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2013/06/08/23/23/key-123554__340.jpg'
-      }
-    ],
-    'cut-finger': [
-      {
-        type: 'text',
-        data: '你昨晚在你自己房间吃水果时不巧切到了手指，血滴到了你宝贵的地毯上。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2014/12/20/13/59/vegetables-573958__340.jpg'
-      }
-    ],
-    'black-briefcase': [
-      {
-        type: 'text',
-        data: '你在巴德尸体的旁边发现了一个空空的黑色公文包，你将它偷偷拿走藏了起来。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
-      }
-    ],
-    'opened-door': [
-      {
-        type: 'text',
-        data: '你昨天晚上离开厨房是将门反锁了的，今天进入厨房时发现门没锁，而除了你就只要管家有厨房的备用钥匙了。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2017/03/03/13/56/key-2114046__340.jpg'
-      }
-    ],
-    'wash': [
-      {
-        type: 'text',
-        data: '你今天前往小花园工作时发现管家正在清洗一条地毯，地毯上有着某种红色液体。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2017/06/20/12/42/alpaca-2422975__340.jpg'
-      }
-    ],
-    'pill': [
-      {
-        type: 'text',
-        data: '你收拾国王的房间时，发现了安眠药的药盒。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775__340.jpg'
-      }
-    ],
-    'the-window': [
-      {
-        type: 'text',
-        data: '尸体发现地点的正上方，正是你的父亲国王亨利二世寝室的窗户。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2016/09/19/00/25/window-1679344__340.jpg'
-      }
-    ],
-    'king-take-pill': [
-      {
-        type: 'text',
-        data: '巴德将军曾告诉你国王似乎正在服用某种药物。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775__340.jpg'
-      }
-    ],
-    'the-letter': [
-      {
-        type: 'text',
-        data: '你在巴德将军的房间中发现了一封信。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2015/07/19/10/00/still-life-851328__340.jpg'
-      },
-      {
-        type: 'letter',
-        data: '各位发现这封信时，我相信我已经不在人世了吧，那就把这封信权当作我的遗书吧。杰克王子的革新派，是一颗为我们王国指明未来道路的明星，只有革新派才会为王国带来更辉煌的明天。我的好友杰克王子年轻有为，为革新派挥洒着自己的才华，而我却年事已高，只能靠着以往的功劳混得的将军之位才能有一席之地，暗地里我为自己的无能羞愧不已。 我还能为王国的明天献上的，就只剩我这条老命了。很早以前，我就发现国王开始服用安眠药，我也开始筹备我的计划了。就在昨天，我开始了我的计划，我先用从管家那偷到的厨房钥匙利用厨房的冰箱中将一把小刀固定在一块冰块上，再将冰块装进公文包中带入了国王的寝室。接下来我只要轻轻一躺……  等我的尸体被发现，估计已经是第二天早上了吧，冰块全化掉后与我的血混在一起相信没有人会发现，而一旦在国王的寝室中发现我的尸体的事传出去，相信保守派的声望一定会一落千丈，我相信睿智的王子一定会好好把握住这次机会的。  如果最后这个计划败露了，那就罢了吧。我这封遗书也能证明国王的清白。这也许就是我生命的最后，最后的那么一点良知吧。'
-      }
-    ],
-    'later-wake-up': [
-      {
-        type: 'text',
-        data: '今天早上管家叫你起床的时间比平时晚了不少。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2017/07/31/19/32/architecture-2560300__340.jpg'
-      }
-    ],
-    'unnormal-link': [
-      {
-        type: 'text',
-        data: '你发现门卫和女仆似乎有什么不同寻常的关系。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2016/07/28/20/00/hand-1549399__340.jpg'
-      }
-    ],
-    'hadis-take-a-case' : [
-      {
-        type: 'text',
-        data: '你发现管家离开时	还顺便拿走了一个黑色公文包。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
-      }
-    ],
-    'pong' : [
-      {
-        type: 'text',
-        data: '你今天早上离开寝室不久似乎听到了重物落地的声音。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2016/11/13/02/31/dizziness-1820223__340.jpg'
-      }
-    ],
-    'morning': [
-      {
-        type: 'text',
-        data: '平时早上管家会推着餐车给国王送餐，国王用完餐后将餐车推出来后顺便告诉你可以离开了，但今天早上管家进入后不久便探出头来告诉你可以离开了，你没有多想就走了。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2015/09/29/15/07/butler-964006__340.jpg'
-      }
-    ],
-    'badon-take-a-case': [
-      {
-        type: 'text',
-        data: '你想起巴德将军进入房间时拿着一个沉甸甸的黑色公文包，但发现尸体时这个公文包不见了。'
-      },
-      {
-        type: 'image',
-        data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
-      }
-    ]
+    'stolen-key': {
+      collectionKey: 'tom-room',
+      name: '备用钥匙',
+      data: [
+        {
+          type: 'text',
+          data: '你有城堡里所有房间的备用钥匙，但今天你发现厨房的那把不见了，也许是被谁偷走了。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2013/06/08/23/23/key-123554__340.jpg'
+        }
+      ]
+    },
+    'cut-finger': {
+      collectionKey: 'tom-room',
+      name: '切到手指',
+      data: [
+        {
+          type: 'text',
+          data: '你昨晚在你自己房间吃水果时不巧切到了手指，血滴到了你宝贵的地毯上。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2014/12/20/13/59/vegetables-573958__340.jpg'
+        }
+      ],
+    },
+    'black-briefcase': {
+      collectionKey: 'tom-memory',
+      name: '藏公文包',
+      data: [
+        {
+          type: 'text',
+          data: '你在巴德尸体的旁边发现了一个空空的黑色公文包，你将它偷偷拿走藏了起来。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
+        }
+      ],
+    },
+    'opened-door': {
+      collectionKey: 'kitchen',
+      name: '厨房门',
+      data: [
+        {
+          type: 'text',
+          data: '你昨天晚上离开厨房是将门反锁了的，今天进入厨房时发现门没锁，而除了你就只要管家有厨房的备用钥匙了。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2017/03/03/13/56/key-2114046__340.jpg'
+        }
+      ],
+    },
+    'wash': {
+      collectionKey: 'marry-memory',
+      name: '管家洗地毯',
+      data: [
+        {
+          type: 'text',
+          data: '你今天前往小花园工作时发现管家正在清洗一条地毯，地毯上有着某种红色液体。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2017/06/20/12/42/alpaca-2422975__340.jpg'
+        }
+      ],
+    },
+    'pill': {
+      collectionKey: 'marry-memory',
+      name: '安眠药',
+      data: [
+        {
+          type: 'text',
+          data: '你收拾国王的房间时，发现了安眠药的药盒。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775__340.jpg'
+        }
+      ],
+    },
+    'the-window': {
+      collectionKey: 'king-room',
+      name: '窗户位置',
+      data: [
+        {
+          type: 'text',
+          data: '尸体发现地点的正上方，正是你的父亲国王亨利二世寝室的窗户。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2016/09/19/00/25/window-1679344__340.jpg'
+        }
+      ],
+    },
+    'king-take-pill': {
+      collectionKey: 'prince-memory',
+      name: '国王服药',
+      data: [
+        {
+          type: 'text',
+          data: '巴德将军曾告诉你国王似乎正在服用某种药物。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775__340.jpg'
+        }
+      ],
+    },
+    'the-letter': {
+      collectionKey: 'badon-room',
+      name: '巴德将军的信',
+      data: [
+        {
+          type: 'text',
+          data: '你在巴德将军的房间中发现了一封信。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2015/07/19/10/00/still-life-851328__340.jpg'
+        },
+        {
+          type: 'letter',
+          data: '各位发现这封信时，我相信我已经不在人世了吧，那就把这封信权当作我的遗书吧。杰克王子的革新派，是一颗为我们王国指明未来道路的明星，只有革新派才会为王国带来更辉煌的明天。我的好友杰克王子年轻有为，为革新派挥洒着自己的才华，而我却年事已高，只能靠着以往的功劳混得的将军之位才能有一席之地，暗地里我为自己的无能羞愧不已。 我还能为王国的明天献上的，就只剩我这条老命了。很早以前，我就发现国王开始服用安眠药，我也开始筹备我的计划了。就在昨天，我开始了我的计划，我先用从管家那偷到的厨房钥匙利用厨房的冰箱中将一把小刀固定在一块冰块上，再将冰块装进公文包中带入了国王的寝室。接下来我只要轻轻一躺……  等我的尸体被发现，估计已经是第二天早上了吧，冰块全化掉后与我的血混在一起相信没有人会发现，而一旦在国王的寝室中发现我的尸体的事传出去，相信保守派的声望一定会一落千丈，我相信睿智的王子一定会好好把握住这次机会的。  如果最后这个计划败露了，那就罢了吧。我这封遗书也能证明国王的清白。这也许就是我生命的最后，最后的那么一点良知吧。'
+        }
+      ],
+    },
+    'later-wake-up': {
+      collectionKey: 'king-memory',
+      name: '起床时间',
+      data: [
+        {
+          type: 'text',
+          data: '今天早上管家叫你起床的时间比平时晚了不少。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2017/07/31/19/32/architecture-2560300__340.jpg'
+        }
+      ],
+    },
+    'unnormal-link': {
+      collectionKey: 'king-memory',
+      name: '门卫和女仆',
+      data: [
+        {
+          type: 'text',
+          data: '你发现门卫和女仆似乎有什么不同寻常的关系。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2016/07/28/20/00/hand-1549399__340.jpg'
+        }
+      ],
+    },
+    'hadis-take-a-case': {
+      collectionKey: 'king-memory',
+      name: '管家带公文包',
+      data: [
+        {
+          type: 'text',
+          data: '你发现管家离开时	还顺便拿走了一个黑色公文包。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
+        }
+      ],
+    },
+    'pong': {
+      collectionKey: 'hadis-memory',
+      name: '重物落地',
+      data: [
+        {
+          type: 'text',
+          data: '你今天早上离开寝室不久似乎听到了重物落地的声音。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2016/11/13/02/31/dizziness-1820223__340.jpg'
+        }
+      ],
+    },
+    'morning': {
+      collectionKey: 'hadis-memory',
+      name: '奇怪的管家',
+      data: [
+        {
+          type: 'text',
+          data: '平时早上管家会推着餐车给国王送餐，国王用完餐后将餐车推出来后顺便告诉你可以离开了，但今天早上管家进入后不久便探出头来告诉你可以离开了，你没有多想就走了。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2015/09/29/15/07/butler-964006__340.jpg'
+        }
+      ],
+    },
+    'badon-take-a-case': {
+      collectionKey: 'hadis-memory',
+      name: '公文包失踪',
+      data: [
+        {
+          type: 'text',
+          data: '你想起巴德将军进入房间时拿着一个沉甸甸的黑色公文包，但发现尸体时这个公文包不见了。'
+        },
+        {
+          type: 'image',
+          data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
+        }
+      ]
+    },
   }
 }

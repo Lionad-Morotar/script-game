@@ -1,7 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line
-import { View, Text, Image } from '@tarojs/components'
+import { View, Text, Button, Image } from '@tarojs/components'
 
+import CBlock from '../cblock/index'
 import InfoPad from '../infoPad/index'
 
 import './index.less'
@@ -14,6 +15,7 @@ export default class ThreadCardCmpt extends Component {
 
   static defaultProps = {
     visible: false,
+    canShare: false,
     thread: [],
     onClose: () => {}
   }
@@ -60,7 +62,7 @@ export default class ThreadCardCmpt extends Component {
 
   render () {
     const { innerActive, zIndex } = this.state
-    const { thread } = this.props
+    const { thread, canShare } = this.props
 
     return (
       <View className='helper-components'>
@@ -74,32 +76,60 @@ export default class ThreadCardCmpt extends Component {
           onClick={this.setVisible.bind(this, false)}
         >
 
+          {/* container */}
           <View className={'container ' + (innerActive ? 'active' : '')}>
 
             {/* logo */}
-            <Image
-              className='head-logo'
-              src={entryIcon}
-              mode='aspectFill'
-            />
+            {
+              !canShare && (
+                <Image
+                  className='head-logo'
+                  src={entryIcon}
+                  mode='aspectFill'
+                />
+              )
+            }
 
             {/* body */}
             <View className='content'>
-              <View className='header'>
-                <View className='header-content'>
-                  <Text className='header-text'>你发现了新的线索</Text>
-                </View>
-              </View>
-              <View className='body'>
-                <InfoPad info={thread} />
+              {
+                !canShare && (
+                  <View className='header'>
+                    <View className='header-content'>
+                      <Text className='header-text'>你发现了新的线索</Text>
+                    </View>
+                  </View>
+                )
+              }
+              <View
+                className='body'
+                style={{
+                  height: canShare ? '100%' : `calc( 100% - ${Taro.pxTransform(130)} )`
+                }}
+              >
+                <InfoPad info={thread.data} />
               </View>
             </View>
 
           </View>
 
+          {/* share button */}
+          <CBlock>
+            <Button
+              className={'share-button ' + (canShare ? 'active' : '')}
+              onClick={this.shareThread}
+            >
+              <Text>分享线索</Text>
+            </Button>
+          </CBlock>
+
         </View>
 
       </View>
     )
+  }
+
+  shareThread (e) {
+    e.stopPropagation()
   }
 }

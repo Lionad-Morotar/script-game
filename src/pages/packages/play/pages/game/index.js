@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { observer, inject } from '@tarojs/mobx'
 // eslint-disable-next-line no-unused-vars
-import { View, Text, Image } from '@tarojs/components'
+import { Block, View, Text, Image } from '@tarojs/components'
 
 import RedDot from '../../../../../components/reddot/index'
 import HeadBar from '../../../../../components/headBar/index'
@@ -45,6 +45,11 @@ export default class PreparePage extends Component {
     curThread: [],    // 当前线索(如果找到了线索, 则展示该线索)
     open: {
       threadCard: false,
+      threadCon: false,
+      shareThread: false,
+    },
+    active: {
+      collection: '',
     }
   }
   store = {
@@ -117,6 +122,7 @@ export default class PreparePage extends Component {
       case 'segments':
       break
       case 'threads':
+        this.setOpen('threadCon', !this.state.open.threadCon)
       break
       case 'open-chat':
       break
@@ -127,6 +133,7 @@ export default class PreparePage extends Component {
   handleActionPress (action) {
     switch (action) {
       case 'threads':
+        this.setOpen('shareThread', true)
         this.setOpen('threadCard', true)
       break
     }
@@ -146,10 +153,29 @@ export default class PreparePage extends Component {
   setOpenSideEffects (name, val) {
     const effect = {
       'threadCard-false' () {
+        this.setOpen('shareThread', false)
         // this.setState({
         //   curThread: []
         // })
       }
+    }
+    const event = effect[`${name}-${val}`]
+    event && event.bind(this)()
+  }
+  setActive (name, val) {
+    const { active } = this.state
+
+    this.setState({
+      active: (
+        active[name] = val,
+        active
+      )
+    })
+
+    this.setActiveSideEffects(name, val)
+  }
+  setActiveSideEffects (name, val) {
+    const effect = {
     }
     const event = effect[`${name}-${val}`]
     event && event.bind(this)()
@@ -176,18 +202,47 @@ export default class PreparePage extends Component {
       this.setOpen('threadCard', true)
     })
   }
+  showAThreadWithShare (hdlThread) {
+    this.setOpen('shareThread', true)
+    this.showAThread(hdlThread)
+  }
 
   /** 页面跳转函数 */
 
   /** 渲染相关函数 */
 
   render () {
-    const { players, activeSegment, curThread, open, playerThreads } = this.state
+    const { play, players, activeSegment, curThread, open, active, playerThreads } = this.state
+    const playerThreadsArray = Object.values(playerThreads)
     const { actionNameReflex } = this.store
     const { appStore } = this.props
 
+    // 当前阶段内容
     const handleSegmentContent = activeSegment.content || []
-    const hasPlayerThreads = Object.keys(playerThreads).length
+    // 小红点 当前玩家是否掌握了线索
+    const hasPlayerThreads = playerThreadsArray.length
+    // 当前玩家掌握的线索的集合
+    const threadCollections = playerThreadsArray.reduce((h, c) => {
+      const collection = play.threadsCollections || {}
+      return (
+        collection && h.push({
+          ...collection[c.collectionKey],
+          key: c.collectionKey
+        }),
+        h
+      )
+    }, []) || []
+    // 当前激活的玩家掌握的线索的集合
+    const activeCollection = active.collection || (threadCollections.length && threadCollections[0].key) || ''
+    // 当前激活的玩家掌握的线索的集合中的线索 (...绕死我了)
+    const threadInCollections = Object.values(playerThreads).reduce((h, c) => {
+      const collectionKey = c.collectionKey
+      const key = Object.keys(playerThreads).find(k => playerThreads[k] === c)
+      return (
+        activeCollection == collectionKey && h.push({...c, key}),
+        h
+      )
+    }, []) || []
 
     return (
       <View className='page with-main-button'>
@@ -234,6 +289,15 @@ export default class PreparePage extends Component {
           />
         </View>
 
+        {/* padding bottom block */}
+        <View
+          style={{
+            width: '100vw',
+            height: open.threadCon ? Taro.pxTransform(270) : '0',
+            transition: '.3s ease'
+          }}
+        />
+
         {/* actions segment */}
         <View className='action-segment fsbc'>
           <View className='actions-con f1 fsac'>
@@ -255,9 +319,14 @@ export default class PreparePage extends Component {
                     }
                     {
                       action === 'threads' && (
-                        <RedDot visible={hasPlayerThreads}>
+                        <Block>
+                          {
+                            null && <RedDot visible={hasPlayerThreads}>
+                              <Text className='iconfont'>&#xe618;</Text>
+                            </RedDot>
+                          }
                           <Text className='iconfont'>&#xe618;</Text>
-                        </RedDot>
+                        </Block>
                       )
                     }
                     {
@@ -281,9 +350,63 @@ export default class PreparePage extends Component {
           </View>
         </View>
 
+        {/* 底部线索集合框 */}
+        <View className={'threads-segment ' + (open.threadCon ? 'active' : '')}>
+
+          {/* 线索分类 */}
+          <View className='block-header'>
+            <Text>线索分类</Text>
+          </View>
+          <View className='thread-collections-con'>
+            {
+              threadCollections.map((c, idx) => {
+                return (
+                  <Text
+                    className={'thread-collection ' + (activeCollection === c.key ? 'bold' : '')}
+                    onClick={this.setActive.bind(this, 'collection', c.key)}
+                    key={c.name + idx}
+                  >{c.name}</Text>
+                )
+              })
+            }
+            {
+              threadCollections.length === 0 && (
+                <View className='fs24 c999 lh60'>暂无线索分类</View>
+              )
+            }
+          </View>
+
+          {/* 线索陈列 */}
+          <View className='block-header'>
+            <Text>线索陈列</Text>
+          </View>
+          <View className='thread-con'>
+            {
+              threadInCollections.map((thread, idx) => {
+                const hdlThread = {key: thread.key}
+                return (
+                  <Text
+                    className='thread-collection'
+                    onClick={this.showAThreadWithShare.bind(this, hdlThread)}
+                    key={thread.name + idx}
+                  >{thread.name}</Text>
+                )
+              })
+            }
+            {
+              threadInCollections.length === 0 && (
+                <View className='fs24 c999 lh60'>暂无线索陈列</View>
+              )
+            }
+          </View>
+
+        </View>
+
+        {/* 单个线索的卡片 */}
         <ThreadCard
           visible={open.threadCard}
           thread={curThread}
+          canShare={open.shareThread}
           onClose={this.setOpen.bind(this, 'threadCard', false)}
         />
 
@@ -297,7 +420,7 @@ export default class PreparePage extends Component {
     const play = getRandomPlayData()
     this.setState({
       play,
-      activeSegment: play.segments[0]
+      activeSegment: play.segments[3]
     }, () => {
       this.setTestData()
     })
