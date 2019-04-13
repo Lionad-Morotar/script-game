@@ -156,7 +156,7 @@ export default {
             },
             {
               role: 'king',
-              data: '1. 维护自己的威严, 不要是自己陷入废言乱语而丢失声望\n2. 将军的死是一个绝好的抹黑王子革新派的好机会'
+              data: '1. 维护自己的威严, 不要是自己陷入绯言乱语而丢失声望\n2. 将军的死是一个绝好的抹黑王子革新派的好机会'
             },
             {
               role: 'prince',
@@ -234,29 +234,29 @@ export default {
         },
         {
           type: 'options',
+          key: 'thread',
           unValidData: [
             {
               role: 'tom',
               data: [
                 {
                   name: '房间',
-                  unValidData: [
+                  key: 'tom-room',
+                  data: [
                     {
                       key: 'stolen-key',
-                      percent: 100
                     },
                     {
                       key: 'cut-finger',
-                      percent: 100
                     }
                   ]
                 },
                 {
                   name: '回忆',
-                  unValidData: [
+                  key: 'tom-memory',
+                  data: [
                     {
                       key: 'black-briefcase',
-                      percent: 100
                     }
                   ]
                 }
@@ -267,23 +267,22 @@ export default {
               data: [
                 {
                   name: '厨房',
-                  unValidData: [
+                  key: 'marry-kitchen',
+                  data: [
                     {
                       key: 'opened-door',
-                      percent: 100
                     }
                   ]
                 },
                 {
                   name: '回忆',
-                  unValidData: [
+                  key: 'marry-memory',
+                  data: [
                     {
                       key: 'wash',
-                      percent: 100
                     },
                     {
                       key: 'pill',
-                      percent: 100
                     }
                   ]
                 }
@@ -294,28 +293,28 @@ export default {
               data: [
                 {
                   name: '国王寝室',
+                  key: 'prince-at-kings-room',
                   data: [
                     {
                       key: 'the-window',
-                      percent: 100
                     }
                   ]
                 },
                 {
                   name: '回忆',
+                  key: 'prince-memory',
                   data: [
                     {
                       key: 'king-take-pill',
-                      percent: 100
                     }
                   ]
                 },
                 {
                   name: '巴德将军的房间',
+                  key: 'prince-in-badon-memory',
                   data: [
                     {
                       key: 'the-letter',
-                      percent: 100
                     }
                   ]
                 }
@@ -326,18 +325,16 @@ export default {
               data: [
                 {
                   name: '回忆',
+                  key: 'king-memory',
                   data: [
                     {
                       key: 'later-wake-up',
-                      percent: 100
                     },
                     {
                       key: 'unnormal-link',
-                      percent: 100
                     },
                     {
                       key: 'hadis-take-a-case',
-                      percent: 100
                     }
                   ]
                 }
@@ -348,18 +345,16 @@ export default {
               data: [
                 {
                   name: '回忆',
+                  key: 'hadis-memory',
                   data: [
                     {
                       key: 'pong',
-                      percent: 100
                     },
                     {
                       key: 'morning',
-                      percent: 100
                     },
                     {
                       key: 'badon-take-a-case',
-                      percent: 100
                     }
                   ]
                 }

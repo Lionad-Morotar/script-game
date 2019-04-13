@@ -37,10 +37,14 @@ export default class PreparePage extends Component {
       sex: 1,
       lever: 7,
     }],
+    playerThreads: {
+
+    },
     activeSegment: {},
     isLongDetails: false,
+    curThread: [],    // 当前线索(如果找到了线索, 则展示该线索)
     open: {
-      threadCard: true,
+      threadCard: false,
     }
   }
   store = {
@@ -109,22 +113,21 @@ export default class PreparePage extends Component {
   }
 
   handleActionClick (action) {
-    const { open } = this.state
-
     switch (action) {
       case 'segments':
       break
       case 'threads':
-        this.setState({
-          open: (
-            open.threadCard = !open.threadCard,
-            open
-          )
-        })
       break
       case 'open-chat':
       break
       case 'note':
+      break
+    }
+  }
+  handleActionPress (action) {
+    switch (action) {
+      case 'threads':
+        this.setOpen('threadCard', true)
       break
     }
   }
@@ -137,6 +140,42 @@ export default class PreparePage extends Component {
         open
       )
     })
+
+    this.setOpenSideEffects(name, val)
+  }
+  setOpenSideEffects (name, val) {
+    const effect = {
+      'threadCard-false' () {
+        this.setState({
+          curThread: []
+        })
+      }
+    }
+    const event = effect[`${name}-${val}`]
+    event && event.bind(this)()
+  }
+
+  // InfoPad 事件响应
+  handleInfoItemAction (info, item) {
+    const itemKey = item.key
+
+    switch (info.key) {
+      case 'thread':
+        const hdlThread = this.postFindThread(itemKey, info)
+        hdlThread && this.showAThread(hdlThread)
+      break
+    }
+  }
+  showAThread (hdlThread) {
+    const { play, playerThreads } = this.state
+    const thread = Taro.$utils.deepClone(play.threads[hdlThread.key])
+    playerThreads[hdlThread.key] = thread
+    console.log(thread)
+    this.setState({
+      curThread: thread
+    }, () => {
+      this.setOpen('threadCard', true)
+    })
   }
 
   /** 页面跳转函数 */
@@ -144,7 +183,7 @@ export default class PreparePage extends Component {
   /** 渲染相关函数 */
 
   render () {
-    const { players, activeSegment, open } = this.state
+    const { players, activeSegment, curThread, open } = this.state
     const { actionNameReflex } = this.store
     const { appStore } = this.props
 
@@ -189,7 +228,10 @@ export default class PreparePage extends Component {
 
         {/* segment content */}
         <View className='contents-con mt20'>
-          <InfoPad info={handleSegmentContent} />
+          <InfoPad
+            info={handleSegmentContent}
+            onInfoItemAction={this.handleInfoItemAction}
+          />
         </View>
 
         {/* actions segment */}
@@ -205,6 +247,7 @@ export default class PreparePage extends Component {
                     hover-stay-time='260'
                     hover-stop-propagation
                     onClick={this.handleActionClick.bind(this, action)}
+                    onLongPress={this.handleActionPress.bind(this, action)}
                     key={action}
                   >
                     {
@@ -236,6 +279,7 @@ export default class PreparePage extends Component {
 
         <ThreadCard
           visible={open.threadCard}
+          thread={curThread}
           onClose={this.setOpen.bind(this, 'threadCard', false)}
         />
 
@@ -253,6 +297,16 @@ export default class PreparePage extends Component {
     }, () => {
       this.setTestData()
     })
+  }
+
+  postFindThread (key, info) {
+    const { playerThreads } = this.state
+    const place = info.data.find(x => x.key === key)
+    const unFindThreads = place.data.filter(x => !playerThreads[x.key])
+
+    const hdlThread = Taro.$utils.getRandomItem(unFindThreads)
+
+    return hdlThread ? Taro.$utils.deepClone(hdlThread) : null
   }
 
 }

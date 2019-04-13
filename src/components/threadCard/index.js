@@ -2,6 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line
 import { View, Text, Image } from '@tarojs/components'
 
+import InfoPad from '../infoPad/index'
+
 import './index.less'
 
 import entryIcon from '../../res/setting.png'
@@ -11,6 +13,8 @@ const THREAD_CARD_ANIMATION_TIME = 400
 export default class ThreadCardCmpt extends Component {
 
   static defaultProps = {
+    visible: false,
+    thread: [],
     onClose: () => {}
   }
 
@@ -56,7 +60,7 @@ export default class ThreadCardCmpt extends Component {
 
   render () {
     const { innerActive, zIndex } = this.state
-    const { } = this.store
+    const { thread } = this.props
 
     return (
       <View className='helper-components'>
@@ -87,6 +91,7 @@ export default class ThreadCardCmpt extends Component {
                 </View>
               </View>
               <View className='body'>
+                <InfoPad info={thread} />
               </View>
             </View>
 
