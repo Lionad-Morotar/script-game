@@ -11,7 +11,7 @@ export function getRandomNumber (min = 0, max = 100) {
 }
 
 // 返回数组随机一项
-export function getRandomItem (arr) {
+export function getRandomItem (arr = []) {
   return arr[getRandomNumber(0, arr.length)]
 }
 
@@ -19,6 +19,16 @@ export function getRandomItem (arr) {
 export function percent (percentNum = 50) {
   const basis = 100
   return (Math.random() * basis) < basis * (percentNum / 100)
+}
+
+export function deepClone (obj) {
+  let res = null
+  try {
+    res = JSON.parse(JSON.stringify(obj))
+  } catch (e) {
+    res = {}
+  }
+  return res
 }
 
 
@@ -98,4 +108,9 @@ export function ago(date) {
       : minutiesAgo ? `${minutiesAgo}分钟前`
       : "刚刚"
   )
+}
+
+export default {
+  getRandomItem,
+  deepClone,
 }

@@ -21,7 +21,9 @@ export default class InfoPadCmpt extends Component {
   }
 
   static defaultProps = {
-    info: []
+    info: [],
+    onInfoAction: () => {},
+    onInfoItemAction: () => {}
   }
 
   componentWillMount () {
@@ -32,10 +34,24 @@ export default class InfoPadCmpt extends Component {
   }
   resetLocalInfo (props) {
     const { info } = props
+    const cloneInfo = Taro.$utils.deepClone(info)
     this.setState({
-      localInfo: info.map(x => (x.data = this.retValidData(x), x))
+      localInfo: cloneInfo.map(x => (x.data = this.retValidData(x), x))
+    }, () => {
+      // console.log(this.state.localInfo)
     })
   }
+
+  /** 交互 */
+
+  handleInfoClick (info) {
+    this.props.onInfoAction(info)
+  }
+  handleInfoItemClick (info, item) {
+    this.props.onInfoItemAction(info, item)
+  }
+
+  /** undefined */
 
   retValidData (item) {
     const { playStore } = this.props
@@ -88,8 +104,16 @@ export default class InfoPadCmpt extends Component {
           ?
           localInfo.map((x, idx) => {
             const { type, data } = x
+
+            {/* if (type === 'options') {
+              console.table(data)
+            } */}
+
             return (
-              <Block key={type + data + idx}>
+              <View
+                onClick={this.handleInfoClick.bind(this, x)}
+                key={type + data + idx}
+              >
                 {
                   type === 'line' && (
                     <Block>
@@ -141,6 +165,7 @@ export default class InfoPadCmpt extends Component {
                               hover-class='details-option-hover'
                               hover-start-time='0'
                               hover-stay-time='100'
+                              onClick={this.handleInfoItemClick.bind(this, x, option)}
                               key={option.name}
                             >
                               <Text className='fs24 bold c444'>{option.name}</Text>
@@ -151,11 +176,11 @@ export default class InfoPadCmpt extends Component {
                     </View>
                   )
                 }
-              </Block>
+              </View>
             )
           })
           :
-          <Text className='fs28 c79 fcc'>暂未详情</Text>
+          <Text className='fs28 c79 fcc'>暂无详情</Text>
         }
       </View>
     )
