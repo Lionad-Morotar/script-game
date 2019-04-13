@@ -63,11 +63,12 @@ export default class PreparePage extends Component {
   setTestData () {
     const { players } = this.state
     const { playStore } = this.props
+    const curRoleKey = this.$router.params.role || 'king'
 
-    playStore.curPlayerRole = 'king'
+    playStore.curPlayerRole = curRoleKey
     this.setState({
       players: (
-        players[0].role = 'king',
+        players[0].role = curRoleKey,
         players
       )
     })

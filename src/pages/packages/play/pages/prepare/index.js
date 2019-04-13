@@ -34,11 +34,12 @@ export default class PreparePage extends Component {
         lever: 7,
       }
     ],
-    roleSelectedRec: {},
-    roleReadydRec: {},
     isLongDetails: false,
-    canReady: false,
-    isReady: false
+    roleSelectedRec: {},  // 记录角色含有选择的用户的容器
+    roleReadydRec: {},    // 记录角色准备状态容器
+    readyRoleKey: '',     // 当前准备角色的key
+    canReady: false,      // 当前用户能否准备
+    isReady: false        // 当前用户是否已经准备
   }
   store = {
   }
@@ -60,7 +61,7 @@ export default class PreparePage extends Component {
 
   activeRole (r) {
     if (this.state.isReady) return
-    const { userinfo, roleSelectedRec } = this.state
+    const { play, userinfo, roleSelectedRec } = this.state
     const username = userinfo.name
 
     // 从其他角色的列表中取出自己
@@ -78,11 +79,12 @@ export default class PreparePage extends Component {
 
     this.setState({
       roleSelectedRec,
-      canReady: !!(handle && handle[0] === username)
+      canReady: !!(handle && handle[0] === username),
+      readyRoleKey: play.roles.find(x => x.name === r.name).key
     })
   }
   getReady () {
-    const { userinfo, roleSelectedRec, roleReadydRec } = this.state
+    const { userinfo, roleSelectedRec, roleReadydRec, readyRoleKey } = this.state
     const username = userinfo.name
     console.log(roleSelectedRec,roleReadydRec)
     Object.entries(roleSelectedRec).map(e => {
@@ -96,6 +98,11 @@ export default class PreparePage extends Component {
           isReady: roleReadydRec[k]
         })
       }
+    })
+
+    // for test
+    Taro.navigateTo({
+      url: `/pages/packages/play/pages/game/index?role=${readyRoleKey}`
     })
   }
 
@@ -235,9 +242,7 @@ export default class PreparePage extends Component {
       const { roleSelectedRec } = this.state
       this.setState({
         roleSelectedRec: (
-          roleSelectedRec[play.roles[0].name] = [{
-            name: 'test'
-          }],
+          roleSelectedRec[play.roles[0].name] = ['test'],
           roleSelectedRec
         )
       })
