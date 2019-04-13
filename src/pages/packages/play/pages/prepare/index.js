@@ -242,7 +242,7 @@ export default class PreparePage extends Component {
       const { roleSelectedRec } = this.state
       this.setState({
         roleSelectedRec: (
-          roleSelectedRec[play.roles[0].name] = ['test'],
+          roleSelectedRec[Taro.$utils.getRandomItem(play.roles).name] = ['test'],
           roleSelectedRec
         )
       })

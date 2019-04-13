@@ -390,54 +390,90 @@ export default {
       {
         type: 'text',
         data: '你有城堡里所有房间的备用钥匙，但今天你发现厨房的那把不见了，也许是被谁偷走了。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2013/06/08/23/23/key-123554__340.jpg'
       }
     ],
     'cut-finger': [
       {
         type: 'text',
         data: '你昨晚在你自己房间吃水果时不巧切到了手指，血滴到了你宝贵的地毯上。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2014/12/20/13/59/vegetables-573958__340.jpg'
       }
     ],
     'black-briefcase': [
       {
         type: 'text',
         data: '你在巴德尸体的旁边发现了一个空空的黑色公文包，你将它偷偷拿走藏了起来。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
       }
     ],
     'opened-door': [
       {
         type: 'text',
         data: '你昨天晚上离开厨房是将门反锁了的，今天进入厨房时发现门没锁，而除了你就只要管家有厨房的备用钥匙了。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2017/03/03/13/56/key-2114046__340.jpg'
       }
     ],
     'wash': [
       {
         type: 'text',
         data: '你今天前往小花园工作时发现管家正在清洗一条地毯，地毯上有着某种红色液体。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2017/06/20/12/42/alpaca-2422975__340.jpg'
       }
     ],
     'pill': [
       {
         type: 'text',
         data: '你收拾国王的房间时，发现了安眠药的药盒。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775__340.jpg'
       }
     ],
     'the-window': [
       {
         type: 'text',
         data: '尸体发现地点的正上方，正是你的父亲国王亨利二世寝室的窗户。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2016/09/19/00/25/window-1679344__340.jpg'
       }
     ],
     'king-take-pill': [
       {
         type: 'text',
         data: '巴德将军曾告诉你国王似乎正在服用某种药物。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2016/12/05/19/43/pill-1884775__340.jpg'
       }
     ],
     'the-letter': [
       {
         type: 'text',
         data: '你在巴德将军的房间中发现了一封信。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2015/07/19/10/00/still-life-851328__340.jpg'
       },
       {
         type: 'letter',
@@ -448,36 +484,60 @@ export default {
       {
         type: 'text',
         data: '今天早上管家叫你起床的时间比平时晚了不少。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2017/07/31/19/32/architecture-2560300__340.jpg'
       }
     ],
     'unnormal-link': [
       {
         type: 'text',
         data: '你发现门卫和女仆似乎有什么不同寻常的关系。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2016/07/28/20/00/hand-1549399__340.jpg'
       }
     ],
     'hadis-take-a-case' : [
       {
         type: 'text',
         data: '你发现管家离开时	还顺便拿走了一个黑色公文包。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
       }
     ],
     'pong' : [
       {
         type: 'text',
         data: '你今天早上离开寝室不久似乎听到了重物落地的声音。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2016/11/13/02/31/dizziness-1820223__340.jpg'
       }
     ],
     'morning': [
       {
         type: 'text',
         data: '平时早上管家会推着餐车给国王送餐，国王用完餐后将餐车推出来后顺便告诉你可以离开了，但今天早上管家进入后不久便探出头来告诉你可以离开了，你没有多想就走了。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2015/09/29/15/07/butler-964006__340.jpg'
       }
     ],
     'badon-take-a-case': [
       {
         type: 'text',
         data: '你想起巴德将军进入房间时拿着一个沉甸甸的黑色公文包，但发现尸体时这个公文包不见了。'
+      },
+      {
+        type: 'image',
+        data: 'https://cdn.pixabay.com/photo/2018/08/07/04/23/accessory-3589060__340.png'
       }
     ]
   }

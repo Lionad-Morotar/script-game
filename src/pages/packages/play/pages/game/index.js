@@ -71,7 +71,7 @@ export default class PreparePage extends Component {
   setTestData () {
     const { players } = this.state
     const { playStore } = this.props
-    const curRoleKey = this.$router.params.role || 'king'
+    const curRoleKey = this.$router.params.role || 'prince'
 
     playStore.curPlayerRole = curRoleKey
     this.setState({
@@ -146,9 +146,9 @@ export default class PreparePage extends Component {
   setOpenSideEffects (name, val) {
     const effect = {
       'threadCard-false' () {
-        this.setState({
-          curThread: []
-        })
+        // this.setState({
+        //   curThread: []
+        // })
       }
     }
     const event = effect[`${name}-${val}`]
