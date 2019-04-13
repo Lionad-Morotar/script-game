@@ -1,0 +1,84 @@
+@main-transition-time: .4s;
+@quick-transition-time: .3s;
+@slow-transition-time: .5s;
+
+.main-button-hover {
+  background-color: #f5f6fa;
+  opacity: .85;
+}
+
+.helper-components {
+  font-family: 'PingFangSC-Light';
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.8);
+  opacity: 0;
+  transition: @main-transition-time ease;
+}
+.mask.active {
+  opacity: 1;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 13vh;
+  box-sizing: border-box;
+  width: 650px;
+  height: 310px;
+  border-top: 20px solid #4ec3ff;
+  border-radius: 18px;
+  background-color: white;
+  opacity: 0;
+  transition: @quick-transition-time ease;
+}
+.container.active {
+  opacity: 1;
+  height: 1010px;
+}
+
+.head-logo {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -80px;
+  left: 50%;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.header-content {
+  padding-top: 50px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.header-text {
+  font-size: 20px;
+  letter-spacing: 12px;
+  color: #b3b3b3;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container .item {
+  opacity: 0;
+  transition: @slow-transition-time;
+  top: -50px;
+}
+.container.active .item {
+  opacity: 1;
+  top: 0;
+}

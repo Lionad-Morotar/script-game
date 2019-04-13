@@ -6,6 +6,7 @@ import { Block, View, Text, Image } from '@tarojs/components'
 // import CBlock from '../../../../../components/cblock/index'
 import HeadBar from '../../../../../components/headBar/index'
 import InfoPad from '../../../../../components/infoPad/index'
+import ThreadCard from '../../../../../components/threadCard/index'
 
 import { getRandomPlayData } from '../../../../../comm/play.js'
 
@@ -38,6 +39,9 @@ export default class PreparePage extends Component {
     }],
     activeSegment: {},
     isLongDetails: false,
+    open: {
+      threadCard: true,
+    }
   }
   store = {
     actions: [
@@ -104,12 +108,43 @@ export default class PreparePage extends Component {
     })
   }
 
+  handleActionClick (action) {
+    const { open } = this.state
+
+    switch (action) {
+      case 'segments':
+      break
+      case 'threads':
+        this.setState({
+          open: (
+            open.threadCard = !open.threadCard,
+            open
+          )
+        })
+      break
+      case 'open-chat':
+      break
+      case 'note':
+      break
+    }
+  }
+  setOpen (name, val) {
+    const { open } = this.state
+
+    this.setState({
+      open: (
+        open[name] = val,
+        open
+      )
+    })
+  }
+
   /** 页面跳转函数 */
 
   /** 渲染相关函数 */
 
   render () {
-    const { players, activeSegment } = this.state
+    const { players, activeSegment, open } = this.state
     const { actionNameReflex } = this.store
     const { appStore } = this.props
 
@@ -169,6 +204,7 @@ export default class PreparePage extends Component {
                     hover-start-time='0'
                     hover-stay-time='260'
                     hover-stop-propagation
+                    onClick={this.handleActionClick.bind(this, action)}
                     key={action}
                   >
                     {
@@ -197,6 +233,11 @@ export default class PreparePage extends Component {
             <Text className='ls3'>下一阶段</Text>
           </View>
         </View>
+
+        <ThreadCard
+          visible={open.threadCard}
+          onClose={this.setOpen.bind(this, 'threadCard', false)}
+        />
 
       </View>
     )
