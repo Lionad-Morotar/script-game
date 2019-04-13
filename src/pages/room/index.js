@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 // eslint-disable-next-line no-unused-vars
-import { View, Text, Image, Swiper, SwiperItem } from '@tarojs/components'
+import { Block, View, Text, Image, Swiper, SwiperItem } from '@tarojs/components'
 
 import CBlock from '../../components/cblock/index'
 import Comment from '../../components/comment/index'
@@ -12,6 +12,8 @@ import { getRandomPlayData, getRandomPlayCommentData } from '../../comm/play.js'
 import './index.less'
 
 import entryIcon from '../../res/homepage/entrys/1.png'
+
+const DISPLAY_ROLES_INLINE_INROOM = 5
 
 export default class RoomPage extends Component {
 
@@ -58,11 +60,12 @@ export default class RoomPage extends Component {
 
   swiperToActiveRole (e) {
     const val = e && e.detail && e.detail.current
-    this.activeRole(val)
+    this.activeRole(this.state.play.roles[val].name)
   }
-  activeRole (idx) {
+  activeRole (name) {
+    const activeRole = this.state.play.roles.find(x => x.name === name)
     this.setState({
-      activeRole: this.state.play.roles[idx]
+      activeRole
     })
   }
   toggleLongDetails () {
@@ -163,23 +166,76 @@ export default class RoomPage extends Component {
             <Text>角色介绍</Text>
           </View>
           <View className='block roles-con'>
-            <View className='roles-avatar-con fsc'>
-              {
-                play.roles.map((r, idx) => {
-                  return (
-                    <CBlock key={r.name}>
-                      <View
-                        className={'role fcc-c ' + (activeRole.name === r.name ? 'acitve' : '')}
-                        onClick={this.activeRole.bind(this, idx)}
-                      >
-                        <Image className='role-icon' src={entryIcon} mode='aspectFill' />
-                        <View className='role-name'>{r.name}</View>
-                      </View>
-                    </CBlock>
-                  )
-                })
-              }
-            </View>
+            {
+              play.roles &&
+              play.roles.length &&
+              play.roles.reduce((h, c) => {
+                if (h.length) {
+                  h[h.length-1].length === DISPLAY_ROLES_INLINE_INROOM
+                    ? h.push([c])
+                    : h[h.length-1].push(c)
+                } else {
+                  h.push([c])
+                }
+                return h
+              }, []).map((xc, idx) => {
+                const resetArray = Array.apply(null, {length: DISPLAY_ROLES_INLINE_INROOM - xc.length})
+
+                return (
+                  <Block key={xc[0].name + idx}>
+                    {
+                      xc.length === DISPLAY_ROLES_INLINE_INROOM ? (
+                        <View className='roles-avatar-con fsbc'>
+                          {
+                            xc.map(r => {
+                              return (
+                                <CBlock key={r.name}>
+                                  <View
+                                    className={'role fcc-c ' + (activeRole.name === r.name ? 'acitve' : '')}
+                                    onClick={this.activeRole.bind(this, r.name)}
+                                  >
+                                    <Image className='role-icon' src={entryIcon} mode='aspectFill' />
+                                    <View className='role-name'>{r.name}</View>
+                                  </View>
+                                </CBlock>
+                              )
+                            })
+                          }
+                        </View>
+                      ) : (
+                        <View className='roles-avatar-con fsbc'>
+                          {
+                            xc.map((r) => {
+                              return (
+                                <CBlock key={r.name}>
+                                  <View
+                                    className={'role fcc-c ' + (activeRole.name === r.name ? 'acitve' : '')}
+                                    onClick={this.activeRole.bind(this, r.name)}
+                                  >
+                                    <Image className='role-icon' src={entryIcon} mode='aspectFill' />
+                                    <View className='role-name'>{r.name}</View>
+                                  </View>
+                                </CBlock>
+                              )
+                            })
+                          }
+                          {/* padding role */}
+                          {
+                            resetArray.map((r, paddingIDX) => {
+                              return (
+                                <View className='role fcc-c' key={r + paddingIDX}>
+                                  <View className='role-padding-con'></View>
+                                </View>
+                              )
+                            })
+                          }
+                        </View>
+                      )
+                    }
+                  </Block>
+                )
+              })
+            }
             <Swiper
               className='role-intro'
               circular
@@ -198,7 +254,7 @@ export default class RoomPage extends Component {
                         <Text className='info-content'>{r.brief}</Text>
                       </View>
                       {
-                        Object.keys(r.info).map(k => {
+                        Object.keys(r.info || []).map(k => {
                           return (
                             <View className='info-item' key={k}>
                               <Text className='info-title'>{k}: </Text>
