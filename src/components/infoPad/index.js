@@ -132,7 +132,7 @@ export default class InfoPadCmpt extends Component {
                 }
                 {
                   type === 'options' && (
-                    <View className='details-options-con'>
+                    <View className='details-options-con fss fw'>
                       {
                         data.map(option => {
                           return (
