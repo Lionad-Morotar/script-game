@@ -61,6 +61,31 @@ export default {
       name: '人物剧本',
       content: [
         {
+          type: 'text',
+          unValidData: [
+            {
+              role: 'hadis',
+              data: '你选择了门卫哈迪斯'
+            },
+            {
+              role: 'king',
+              data: '你选择了国王亨利二世'
+            },
+            {
+              role: 'prince',
+              data: '你选择了杰克王子'
+            },
+            {
+              role: 'marry',
+              data: '你选择了女仆玛丽'
+            },
+            {
+              role: 'tom',
+              data: '你选择了管家汤姆'
+            }
+          ]
+        },
+        {
           type: 'line',
           data: '你该透露的线索'
         },
