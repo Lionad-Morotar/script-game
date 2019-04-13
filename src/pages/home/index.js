@@ -189,12 +189,12 @@ export default class standardPage extends Component {
         </View>
         <View className='segment plays-con p030'>
           {
-            plays.map((p) => {
+            plays.map((p, idx) => {
               return (
                 <View
                   className='mt20'
                   onClick={this.goRoom.bind(this, p.id)}
-                  key={p._id}
+                  key={p._id + idx}
                 >
                   <Play play={p}  />
                 </View>
