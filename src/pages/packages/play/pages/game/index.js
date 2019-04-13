@@ -420,7 +420,7 @@ export default class PreparePage extends Component {
     const play = getRandomPlayData()
     this.setState({
       play,
-      activeSegment: play.segments[3]
+      activeSegment: play.segments[0]
     }, () => {
       this.setTestData()
     })
