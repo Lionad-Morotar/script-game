@@ -96,13 +96,13 @@ export default class PreparePage extends Component {
             roleReadydRec
           ),
           isReady: roleReadydRec[k]
+        }, () => {
+          // for test
+          this.state.isReady && Taro.navigateTo({
+            url: `/pages/packages/play/pages/game/index?role=${readyRoleKey}`
+          })
         })
       }
-    })
-
-    // for test
-    Taro.navigateTo({
-      url: `/pages/packages/play/pages/game/index?role=${readyRoleKey}`
     })
   }
 

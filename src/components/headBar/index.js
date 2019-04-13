@@ -11,9 +11,6 @@ const HEADBAR_HEIGHT = 90
 export default class HeadBarComponent extends Component {
 
   state = {
-    // _titleClickCount: 0,
-    // _titleClickCountTick: null,
-    stateStatus: '',
     headBarHeight: 0,
     headBarHeightStore: 0,
   }
@@ -52,7 +49,6 @@ export default class HeadBarComponent extends Component {
 
   render () {
     const {
-      stateStatus,
       headBarHeight,
       headBarHeightStore,
     } = this.state
@@ -95,11 +91,11 @@ export default class HeadBarComponent extends Component {
         >
           <View className='headbar-wrapper'>
             {/* 返回图标 */}
-            <Text className='fcc' ref={this.refIcon} data-status={stateStatus} onClick={this.toggleHeadBarMenu}>
+            <Text className='fcc' ref={this.refIcon} onClick={this.toggleHeadBarMenu}>
               <Text className='iconfont headbar-icon fs32 goback'>&#xe6df;</Text>
             </Text>
             {/* 页面标题 */}
-            <Text className={'title' + ' ' + (stateStatus === 'default' ? 'no-icon-title' : '')}>
+            <Text className='title'>
               <Text>{this.props.title || ''}</Text>
             </Text>
           </View>
@@ -110,5 +106,9 @@ export default class HeadBarComponent extends Component {
 
       </View>
     )
+  }
+
+  toggleHeadBarMenu () {
+    Taro.navigateBack()
   }
 }
