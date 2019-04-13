@@ -1,0 +1,19 @@
+.reddot-cmpt {
+  position: relative;
+}
+.reddot {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  transition: .1s;
+
+  &.active {
+    width: 14px;
+    height: 14px;
+    background: #FF614E;
+  }
+}
