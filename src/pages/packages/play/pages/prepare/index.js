@@ -140,7 +140,7 @@ export default class PreparePage extends Component {
           {/* 展开按钮 */}
           <View
             className={'click-area arrow-icon fcc ' + (this.state.isLongDetails ? 'reverse' : '')}
-            onClick={this.toggleisLongDetails}
+            onClick={this.toggleisLongDetails.bind(this)}
           >
             <Text className='iconfont'>&#xe652;</Text>
           </View>
@@ -221,7 +221,7 @@ export default class PreparePage extends Component {
         <MainButton
           label={isReady ? '取消准备' : '选择角色'}
           disabled={!canReady}
-          onClick={this.getReady}
+          onClick={this.getReady.bind(this)}
         />
 
       </View>

@@ -94,7 +94,7 @@ export default class standardPage extends Component {
         <CBlock delay={100}>
           <Swiper className='header-swiper'
             autoplay
-            onChange={this.setIndicators}
+            onChange={this.setIndicators.bind(this)}
           >
             {
               swipers.map(s => {

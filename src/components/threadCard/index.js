@@ -117,7 +117,7 @@ export default class ThreadCardCmpt extends Component {
           <CBlock>
             <Button
               className={'share-button ' + (canShare ? 'active' : '')}
-              onClick={this.shareThread}
+              onClick={this.shareThread.bind(this)}
             >
               <Text>分享线索</Text>
             </Button>

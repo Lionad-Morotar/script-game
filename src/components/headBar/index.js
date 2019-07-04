@@ -91,7 +91,7 @@ export default class HeadBarComponent extends Component {
         >
           <View className='headbar-wrapper'>
             {/* 返回图标 */}
-            <Text className='fcc' ref={this.refIcon} onClick={this.toggleHeadBarMenu}>
+            <Text className='fcc' ref={this.refIcon} onClick={this.toggleHeadBarMenu.bind(this)}>
               <Text className='iconfont headbar-icon fs32 goback'>&#xe6df;</Text>
             </Text>
             {/* 页面标题 */}

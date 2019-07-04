@@ -285,7 +285,7 @@ export default class PreparePage extends Component {
         <View className='contents-con mt20'>
           <InfoPad
             info={handleSegmentContent}
-            onInfoItemAction={this.handleInfoItemAction}
+            onInfoItemAction={this.handleInfoItemAction.bind(this)}
           />
         </View>
 
@@ -343,8 +343,8 @@ export default class PreparePage extends Component {
           </View>
           <View
             className='next-button fcc'
-            onClick={this.goNextSegment}
-            onLongPress={this.goLastSegment}
+            onClick={this.goNextSegment.bind(this)}
+            onLongPress={this.goLastSegment.bind(this)}
           >
             <Text className='ls3'>下一阶段</Text>
           </View>

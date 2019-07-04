@@ -69,7 +69,7 @@ export default class MainButtonComponent extends Component {
             plain
             className={'main-button ' + (disabled ? 'disabled' : '')}
             hoverClass={this.props.hoverClass || 'main-button-hover-class'}
-            onClick={this.handleClick}
+            onClick={this.handleClick.bind(this)}
           >
             <Text>{label}</Text>
           </Button>

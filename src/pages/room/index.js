@@ -240,7 +240,7 @@ export default class RoomPage extends Component {
               className='role-intro'
               circular
               current={activeRoleIdx}
-              onChange={this.swiperToActiveRole}
+              onChange={this.swiperToActiveRole.bind(this)}
               style={{
                 height: this.state.longDetails ? '' : Taro.pxTransform(172)
               }}
@@ -269,10 +269,10 @@ export default class RoomPage extends Component {
                 })
               }
             </Swiper>
-            <View className='mask' onClick={this.toggleLongDetails}></View>
+            <View className='mask' onClick={this.toggleLongDetails.bind(this)}></View>
             <Text
               className={'click-area iconfont arrow-icon ' + (this.state.longDetails ? 'reverse' : '')}
-              onClick={this.toggleLongDetails}
+              onClick={this.toggleLongDetails.bind(this)}
             >&#xe652;</Text>
           </View>
 
@@ -297,7 +297,7 @@ export default class RoomPage extends Component {
         </View>
 
         {/* 创建房间按钮 */}
-        <MainButton label='创建房间' onClick={this.tryCreateAnRoom} />
+        <MainButton label='创建房间' onClick={this.tryCreateAnRoom.bind(this)} />
 
       </View>
     )
